@@ -2,10 +2,6 @@ extends KinematicBody
 
 const BulletScene = preload("res://objects/bullet/Bullet.tscn")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var player_speed = 0
 var player_max_speed = 10
 var player_movement_direction = Vector3.FORWARD
@@ -14,6 +10,12 @@ var player_movement_acceleration = 1.0  # Speed at which the current vector move
 var player_turn_speed = 1.0  # Speed at which the player turns to face new direction (keyboard)
 var player_look_speed = -0.005  # Sensitivity of mouse movement to player look
 
+enum StrafeDirection{
+	LEFT,
+	RIGHT,
+	NONE,
+}
+var strafe_direction = StrafeDirection.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +29,13 @@ func _ready():
 
 func _player_movement(delta):
 	var movement = transform.basis.x * player_speed
+	
+	match strafe_direction:
+		StrafeDirection.LEFT:
+			movement = movement.rotated(Vector3.UP, PI/2)
+		StrafeDirection.RIGHT:
+			movement = movement.rotated(Vector3.UP, -PI/2)
+	
 	move_and_slide(movement)
 
 func _physics_process(delta):
@@ -48,6 +57,7 @@ func _handle_player_fire():
 	#Spawn a bullet
 	var new_bullet = BulletScene.instance()
 	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
+	new_bullet.transform.basis.x = transform.basis.x
 	get_tree().root.add_child(new_bullet)
 	
 
@@ -57,17 +67,31 @@ func _unhandled_key_input(event: InputEventKey):
 		get_tree().quit()
 	elif event.is_action("player_forward"):
 		if event.pressed:
+			strafe_direction = StrafeDirection.NONE
 			player_speed = player_max_speed
 		else:
 			player_speed = 0
 	elif event.is_action("player_backwards"):
 		if event.pressed:
+			strafe_direction = StrafeDirection.NONE
 			player_speed = -player_max_speed
 		else:
 			player_speed = 0
 	elif event.is_action("player_fire"):
 		if event.pressed:
 			_handle_player_fire()
+	elif event.is_action("player_left"):
+		if event.pressed:
+			player_speed = player_max_speed
+			strafe_direction = StrafeDirection.LEFT
+		else:
+			player_speed = 0
+	elif event.is_action("player_right"):
+		if event.pressed:
+			player_speed = player_max_speed
+			strafe_direction = StrafeDirection.RIGHT
+		else:
+			player_speed = 0
 
 func _unhandled_input(event):
 	

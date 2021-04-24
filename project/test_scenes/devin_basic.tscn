@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enemy/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/door/Door.tscn" type="PackedScene" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 27.2922, 0.033, 24.9356 )
@@ -33,3 +34,11 @@ transform = Transform( 1, 0, 0, 0, 0.767781, 0.640713, 0, -0.640713, 0.767781, 0
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.23365 )
+
+[node name="Door" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34017, 9.7357 )
+
+[node name="Target" parent="Door" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.83939, 0 )
+
+[editable path="Door"]

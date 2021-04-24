@@ -20,10 +20,13 @@ func _ready():
 func _die():
 	$AnimatedSprite3D.play("die")
 	$Hurtbox.queue_free()
+	$CollisionShape.disabled = true
+	$AudioStreamPlayer3D.play_die()
 
 func _take_hit(bullet: Bullet):
 	bullet.queue_free()
 	health -= bullet.damage
+	$AudioStreamPlayer3D.play_ow()
 	
 	if health < 0:
 		_die()
