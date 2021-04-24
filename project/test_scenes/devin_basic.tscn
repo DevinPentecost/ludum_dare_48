@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enemy/Enemy.tscn" type="PackedScene" id=2]
@@ -13,6 +13,11 @@ extents = Vector3( 27.2922, 0.033, 24.9356 )
 material = SubResource( 2 )
 size = Vector2( 54.55, 50 )
 
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -0.079, 0.315, 0, -1.299, 1.67, 0, 1.312, -0.198, 0, -1.235, -3.017, 0, -3.926, -0.405, -2.628 )
+
+[sub_resource type="PrismMesh" id=5]
+
 [node name="Root" type="Spatial"]
 
 [node name="Level" type="Spatial" parent="."]
@@ -25,6 +30,17 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="Level/Floor"]
 transform = Transform( -1, -1.77636e-15, -5.96046e-08, -5.96046e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7197, 0.249279, 11.4734 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/StaticBody"]
+transform = Transform( 0.643296, 0, 0.765618, 0, 1, 0, -0.765618, 0, 0.643296, 0.0845795, 0, -0.650187 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
