@@ -1,4 +1,7 @@
 extends KinematicBody
+class_name Player
+signal fired
+
 
 const BulletScene = preload("res://objects/bullet/Bullet.tscn")
 
@@ -16,6 +19,9 @@ var player_look_speed = -0.005  # Sensitivity of mouse movement to player look
 
 var _sprinting = false
 var _current_fall_speed = 0
+
+onready var collider = $CollisionShape
+onready var target = $Target
 
 
 enum StrafeDirection{
@@ -136,6 +142,8 @@ func _handle_player_fire():
 	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
 	new_bullet.transform.basis.x = transform.basis.x
 	get_tree().root.add_child(new_bullet)
+	
+	emit_signal("fired")
 	
 
 func _unhandled_key_input(event: InputEventKey):

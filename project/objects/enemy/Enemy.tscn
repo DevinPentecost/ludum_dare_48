@@ -92,14 +92,16 @@ func play_die():
 #	pass
 "
 
-[node name="Enemy" type="KinematicBody"]
+[node name="Enemy" type="KinematicBody" groups=[
+"enemy",
+]]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform( 4.62633, 0, 0, 0, 5.27192, 0, 0, 0, 24.3897, 0, 1.66697, 0 )
 billboard = 2
 frames = SubResource( 10 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -117,4 +119,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40555, 0 )
 unit_db = 21.176
 script = SubResource( 11 )
 
+[node name="Sight" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92929, 0 )
+enabled = true
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_SleepTimer_timeout"]
