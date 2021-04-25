@@ -2,7 +2,7 @@ extends RigidBody
 class_name Bullet
 
 export(float) var damage = 30
-export(float) var speed = 10
+export(float) var speed = 30
 
 
 # Called when the node enters the scene tree for the first time.

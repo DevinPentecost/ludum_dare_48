@@ -156,8 +156,7 @@ func _unhandled_key_input(event: InputEventKey):
 		if event.pressed:
 			_handle_player_fire()
 	
-	
-func _unhandled_input(event):
+func _input(event):
 	
 	#Is this a mouse look?
 	if event is InputEventMouseMotion:
@@ -165,7 +164,6 @@ func _unhandled_input(event):
 		#We need to adjust the player look based on the event
 		_handle_player_look(event)
 	
-func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			_handle_player_fire()
