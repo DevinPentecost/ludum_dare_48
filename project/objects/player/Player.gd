@@ -97,8 +97,7 @@ func _ready():
 	set_process_unhandled_key_input(true)
 	set_process_unhandled_input(true)
 	set_process_input(true)
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _player_movement(delta):
 	if player_dead: return
@@ -203,6 +202,8 @@ func _input(event):
 		_handle_player_look(event)
 	
 	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 		if event.button_index == 1 and event.pressed:
 			_handle_player_fire()
 
