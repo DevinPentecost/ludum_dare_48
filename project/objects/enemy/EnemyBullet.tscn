@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/bullet/Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/enemy/rockman_attack.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 7
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 183, 133 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 7
+atlas = ExtResource( 2 )
+region = Rect2( 183, 0, 183, 133 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 7
+atlas = ExtResource( 2 )
+region = Rect2( 366, 0, 183, 133 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 7
+atlas = ExtResource( 2 )
+region = Rect2( 549, 0, 183, 133 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 7
+atlas = ExtResource( 2 )
+region = Rect2( 732, 0, 183, 133 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="EnemyBullet" groups=[
+"enemy",
+] instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 0
+axis_lock_linear_y = true
+speed = 10.0
+
+[node name="Sprite3D" parent="." index="0"]
+frames = SubResource( 6 )
+frame = 3
+playing = true
+
+[node name="LifetimeTimer" parent="." index="2"]
+wait_time = 4.0
