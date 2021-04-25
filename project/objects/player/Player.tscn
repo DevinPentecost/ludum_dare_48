@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://objects/gui/view_model/view_model_fire.png" type="Texture" id=4]
+[ext_resource path="res://objects/gui/view_model/bite0002.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=4]
 [ext_resource path="res://objects/player/ViewModel.gd" type="Script" id=5]
 [ext_resource path="res://objects/gui/view_model/CC0_barking_01.tres" type="AudioStream" id=6]
 [ext_resource path="res://objects/player/paw.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/player/paw_mirror.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/gui/view_model/bite0000.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -17,10 +19,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "fire",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [sub_resource type="BoxShape" id=3]
@@ -47,7 +49,7 @@ transform = Transform( 0.844071, -0.17523, -0.506793, 0.513892, 0.534285, 0.6711
 transform = Transform( 0.894063, 0.221271, 0.389474, -0.446374, 0.512759, 0.733368, -0.0374334, -0.829528, 0.557209, 0.435584, -0.784, -0.163971 )
 
 [node name="ViewModel" type="AnimatedSprite3D" parent="Camera"]
-transform = Transform( 0.5, 0, 2.18557e-08, 0, 0.5, 0, 2.18557e-08, 0, 1, 0, -0.408, -1.375 )
+transform = Transform( 0.5, 0, 2.18557e-08, 0, 0.5, 0, 2.18557e-08, 0, 1, 2.85118e-08, -0.0814605, -0.722727 )
 frames = SubResource( 2 )
 script = ExtResource( 5 )
 

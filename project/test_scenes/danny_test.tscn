@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enemy/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/door/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/environment/dirt.png" type="Texture" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -29,6 +30,7 @@ func _ready():
 extents = Vector3( 27.2922, 0.033, 24.9356 )
 
 [sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 5 )
 
 [sub_resource type="QuadMesh" id=4]
 material = SubResource( 3 )
