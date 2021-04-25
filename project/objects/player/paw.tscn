@@ -2,7 +2,7 @@
 
 [ext_resource path="res://objects/player/paws.gltf" type="PackedScene" id=1]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "idle-loop"
 length = 1.25
 loop = true
@@ -35,6 +35,6 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="paws" index="1"]
 autoplay = "idle-loop"
-anims/idle-loop = SubResource( 4 )
+anims/idle-loop = SubResource( 1 )
 
 [editable path="paws"]
