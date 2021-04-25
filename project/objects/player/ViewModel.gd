@@ -1,27 +1,17 @@
-extends AnimatedSprite3D
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+extends Spatial
 
 func fire():
-	play("fire")
+	$Sprite.play("fire")
 	$AudioStreamPlayer.play()
 
-
-func _on_ViewModel_animation_finished():
+func die():
+	$Tween.interpolate_property($DedRed, "opacity", 0, 0.8, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.1)
+	$Tween.interpolate_property($Sprite, "translation:y", $Sprite.transform.origin.y, $Sprite.transform.origin.y - 2, 2, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
 	
-	#Go back to normal
-	play("default")
+	#Play die sound
+	pass
 
+func _on_Sprite_animation_finished():
+	#Go back to normal
+	$Sprite.play("default")
