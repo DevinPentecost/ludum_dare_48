@@ -1,5 +1,6 @@
 extends KinematicBody
 
+const EnemyBulletScene = preload("res://objects/enemy/EnemyBullet.tscn")
 
 export(float) var health = 100
 export(float) var hearing_range_squared = 100
@@ -8,6 +9,7 @@ export(float) var sight_range_squared = 150
 onready var _player: Player = get_tree().get_nodes_in_group("player")[0]
 onready var _sleep_timer = $SleepTimer
 onready var _sight: RayCast = $Sight
+onready var _attack_timer:Timer = $AttackTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,14 +20,23 @@ func _ready():
 
 enum EnemyState {
 	SLEEP,
-	CHASE
+	CHASE,
+	DEAD,
 }
 var enemy_state = EnemyState.SLEEP
 
 
 func _physics_process(delta):
+	look_at(_player.target.global_transform.origin, Vector3.UP)
+	transform.basis.y = Vector3.UP
 	
 	_look_for_player()
+	_try_attack()
+	
+func _try_attack():
+	if enemy_state == EnemyState.CHASE and _attack_timer.time_left == 0:
+		_fire()
+		_attack_timer.start()
 	
 func _look_for_player():
 	#Look for the player in range
@@ -43,6 +54,9 @@ func _die():
 	$Hurtbox.queue_free()
 	$CollisionShape.disabled = true
 	$AudioStreamPlayer3D.play_die()
+	enemy_state = EnemyState.DEAD
+	set_process(false)
+	set_physics_process(false)
 
 func _take_hit(bullet: Bullet):
 	bullet.queue_free()
@@ -51,6 +65,17 @@ func _take_hit(bullet: Bullet):
 	
 	if health < 0:
 		_die()
+
+func _fire():
+	
+	$BulletSpawner.look_at(_player.target.global_transform.origin, Vector3.UP)
+	
+	#Spawn a bullet
+	var new_bullet = EnemyBulletScene.instance()
+	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
+	new_bullet.transform.basis.x = transform.basis.x
+	get_tree().root.add_child(new_bullet)
+	new_bullet.look_at(_player.target.global_transform.origin, Vector3.UP)
 
 func _on_Hurtbox_body_entered(body: PhysicsBody):
 	

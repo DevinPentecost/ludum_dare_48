@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name Player
 signal fired
+signal health_changed(new_health)
+signal player_died
 
 
 const BulletScene = preload("res://objects/bullet/Bullet.tscn")
@@ -16,6 +18,8 @@ var player_movement_acceleration = 1.0  # Speed at which the current vector move
 var player_turn_speed = 1.0  # Speed at which the player turns to face new direction (keyboard)
 var player_look_speed = -0.005  # Sensitivity of mouse movement to player look
 
+var player_health = 100
+var player_dead = false
 
 var _sprinting = false
 var _current_fall_speed = 0
@@ -98,6 +102,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _player_movement(delta):
+	if player_dead: return
 	
 	_movement_helper.update_speed(delta)
 	var movement = transform.basis.x * _movement_helper.current_speed
@@ -111,30 +116,53 @@ func _player_movement(delta):
 		rotation_angle = - rotation_angle
 	
 	movement = movement.rotated(Vector3.UP, rotation_angle)
+	move_and_slide(movement)
 	
+func _player_fall(delta):
 	#Apply gravity
 	_current_fall_speed -= gravity * delta
+	var movement = Vector3.ZERO
 	movement.y = _current_fall_speed
 	move_and_slide(movement)
 	
 	if get_slide_count():
 		_current_fall_speed = 0
-	
 
 func _physics_process(delta):
 	_player_movement(delta)
+	_player_fall(delta)
 
 func _movement_towards_target():
 	pass
 
+func take_damage(damage):
+	player_health -= damage
+	emit_signal("health_changed", player_health)
+
+func die():
+	if player_dead: return
+	
+	#First, move the collision shape up (so we fall)
+	collider.transform.origin.y += $Camera.transform.origin.y - 1
+	
+	#Add a horrible red screen or something
+	$Camera/ViewModel.die()
+	
+	#TODO: Play a sad die sound
+	player_dead = true
+	emit_signal("player_died")
+	
 
 func _handle_player_look(mouse_event : InputEventMouseMotion):
+	if player_dead: return
 	
 	#Figure out how much the player looked (horizontal)
 	var horizontal_look = mouse_event.relative.x * player_look_speed
 	rotate_y(horizontal_look)
 
 func _handle_player_fire():
+	if player_dead: return
+	
 	$Camera/ViewModel.fire()
 	
 	#Spawn a bullet
@@ -149,7 +177,8 @@ func _handle_player_fire():
 func _unhandled_key_input(event: InputEventKey):
 	
 	if event.is_action_pressed("player_pause"):
-		get_tree().quit()
+		if not player_dead: die()
+		else: get_tree().quit()
 	elif event.is_action("player_forward"):
 		_movement_helper.forward = event.pressed
 	elif event.is_action("player_backwards"):
@@ -175,3 +204,12 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			_handle_player_fire()
+
+
+func _on_HurtBox_body_entered(body):
+	
+	if body.is_in_group("enemy") and body.is_in_group("bullet"):
+		#We got hit!
+		body = body as Bullet
+		take_damage(body.damage)
+
