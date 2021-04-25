@@ -21,7 +21,6 @@ var player_look_speed = -0.005  # Sensitivity of mouse movement to player look
 var player_health = 100
 var player_dead = false
 
-var _sprinting = false
 var _current_fall_speed = 0
 
 onready var collider = $CollisionShape
@@ -40,7 +39,7 @@ class MovementHelper:
 	var backward = false
 	var left = false
 	var right = false
-	var sprinting = false
+	var sprinting = true
 	
 	var current_speed = 0
 	var accelleration = 8
@@ -190,7 +189,7 @@ func _unhandled_key_input(event: InputEventKey):
 	elif event.is_action("player_right"):
 		_movement_helper.right = event.pressed
 	elif event.is_action("player_hold_sprint"):
-		_movement_helper.sprinting = event.pressed
+		_movement_helper.sprinting = not event.pressed
 	elif event.is_action("player_fire"):
 		if event.pressed:
 			_handle_player_fire()
