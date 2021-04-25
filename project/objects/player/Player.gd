@@ -138,6 +138,8 @@ func _movement_towards_target():
 func take_damage(damage):
 	player_health -= damage
 	emit_signal("health_changed", player_health)
+	if player_health < 0:
+		die()
 
 func die():
 	if player_dead: return
