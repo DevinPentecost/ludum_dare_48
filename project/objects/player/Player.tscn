@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://objects/player/ViewModel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/level_pieces/level_1_env.tres" type="Environment" id=4]
-[ext_resource path="res://objects/player/ow.ogg" type="AudioStream" id=5]
 [ext_resource path="res://objects/player/paw.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/player/PlayerShape.tres" type="Shape" id=7]
 [ext_resource path="res://objects/player/paw_mirror.tscn" type="PackedScene" id=8]
@@ -88,7 +87,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.63
 shape = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
 script = SubResource( 3 )
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
