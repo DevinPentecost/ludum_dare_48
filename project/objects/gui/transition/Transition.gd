@@ -11,7 +11,7 @@ export(float, 0, 100) var noise_delay_intensity setget _set_noise_delay_intensit
 export(int) var noise_offset = 0 setget _set_noise_offset
 export(int, 0, 10000) var step setget _set_step
 
-onready var _image_data = image.get_data()
+onready var _image_data = TransitionSingleton.image_data
 
 func _set_step(_step):
 	step = _step
@@ -27,9 +27,7 @@ func _set_noise_delay_intensity(_noise_delay_intensity):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_image_data.decompress()
-	_image_data.lock()
-	pass # Replace with function body.
+	start_transition()
 
 func update_image():
 	
@@ -62,23 +60,8 @@ func update_image():
 	new_image.unlock()
 	texture.create_from_image(new_image)
 
-func start_transition(time=20):
+func start_transition(time=2):
 	$Tween.interpolate_method(self, "_set_step", 0, get_viewport_rect().size.y + 100, time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	emit_signal("transition_completed")
-
-func get_current_screenshot():
-	
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
-	
-	var viewport = get_viewport()
-	
-	var screen_image = viewport.get_texture().get_data()
-	screen_image.flip_y()
-	image = ImageTexture.new()
-	image.create_from_image(screen_image)
-	_image_data = image.get_data()
-	_image_data.decompress()
-	_image_data.lock()

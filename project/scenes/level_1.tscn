@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/level_pieces/floor.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://objects/level_pieces/level_1_floor_material.tres" type="Material" id=4]
 [ext_resource path="res://objects/enemy/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/level_pieces/level_1_wall_material.tres" type="Material" id=6]
+[ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/level_pieces/ramp.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/level_end/LevelEnd.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -16,7 +19,7 @@
 [node name="Level" type="Spatial" parent="."]
 
 [node name="Floor" parent="Level" instance=ExtResource( 2 )]
-transform = Transform( 1043.47, 0, 0, 0, 1, 0, 0, 0, 706.408, 0, 0, 0 )
+transform = Transform( 300, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0 )
 
 [node name="MeshInstance" parent="Level/Floor" index="1"]
 material/0 = ExtResource( 4 )
@@ -127,8 +130,368 @@ material/0 = ExtResource( 6 )
 [node name="Enemy" parent="Level/IntroRoom" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -4 )
 
+[node name="IntroHallway" type="Spatial" parent="Level"]
+
+[node name="Wall" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1.31135e-07, 0, -1, 0, 1, 0, 1, 0, 1.31135e-07, 20, 4, 10 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall7" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -1.09279e-07, 0, 0.5, 0, 1, 0, -1, 0, -2.18557e-07, 18, 4, 2 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall7" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall2" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1.31135e-07, 0, -1, 0, 1, 0, 1, 0, 1.31135e-07, 28, 4, 10 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall2" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall5" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74232e-08, 0, 1, 0, 8.74232e-08, 0, -1, 20, 4, -10 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall5" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall12" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74232e-08, 0, 1, 0, 8.74232e-08, 0, -1, 20, 4, -18 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall12" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall6" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74232e-08, 0, 1, 0, 8.74232e-08, 0, -1, 20, 4, -2 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall6" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall3" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, 6 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall3" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall4" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, -2 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall4" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall8" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, -10 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall8" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall9" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, -18 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall9" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall10" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, -26 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall10" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall11" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32, 4, -34 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall11" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall13" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 28, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall13" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall14" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 20, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall14" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall15" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 12, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall15" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall16" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 4, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall16" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall17" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall17" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall18" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -12, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall18" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall19" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -20, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall19" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall20" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -28, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall20" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall21" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -36, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall21" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall22" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -44, 4, -38 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall22" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall23" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -16, 4, -22 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall23" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall24" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8, 4, -22 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall24" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall25" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 1.90735e-06, 4, -22 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall25" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall26" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 8, 4, -22 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall26" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall27" parent="Level/IntroHallway" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 16, 4, -22 )
+
+[node name="MeshInstance" parent="Level/IntroHallway/Wall27" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Enemy" parent="Level/IntroHallway" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -31 )
+
+[node name="Enemy2" parent="Level/IntroHallway" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -31 )
+
+[node name="Arena" type="Spatial" parent="Level"]
+
+[node name="Wall23" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -24, 4, 10 )
+
+[node name="Wall24" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -20, 4, 6 )
+
+[node name="Wall25" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -20, 4, -2 )
+
+[node name="Wall26" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -20, 4, -10 )
+
+[node name="Wall27" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -20, 4, -18 )
+
+[node name="Wall28" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -55, 4, 9.99999 )
+
+[node name="Wall67" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -63, 4, 9.99999 )
+
+[node name="Wall29" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -47, 4, 9.99999 )
+
+[node name="Wall30" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -39, 4, 9.99999 )
+
+[node name="Wall31" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -31, 4, 9.99999 )
+
+[node name="Wall32" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, -52, -2, -30 )
+
+[node name="Wall36" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, -52, -2, -38 )
+
+[node name="Wall37" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -48, 4, -39 )
+
+[node name="Wall33" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, -52, -2, -22 )
+
+[node name="Wall34" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, -52, -2, -14 )
+
+[node name="Wall35" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, -52, -2, -6.00001 )
+
+[node name="Wall38" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -52, -2, -14 )
+
+[node name="Wall39" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -52, -2, -6 )
+
+[node name="Wall40" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -52, -2, -22 )
+
+[node name="Wall41" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -52, -2, -30 )
+
+[node name="Wall42" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -52, -2, -38 )
+
+[node name="Wall43" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -18 )
+
+[node name="Wall44" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -26 )
+
+[node name="Wall45" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -10 )
+
+[node name="Wall46" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -2.00001 )
+
+[node name="Wall47" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, 6 )
+
+[node name="Wall48" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -58 )
+
+[node name="Wall49" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -66 )
+
+[node name="Wall50" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -50 )
+
+[node name="Wall51" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -42 )
+
+[node name="Wall52" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -4.37114e-07, 0, 1, 0, 4.37114e-07, 0, -1, -65, 4, -34 )
+
+[node name="Wall53" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -37, 4, -70 )
+
+[node name="Wall54" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -29, 4, -70 )
+
+[node name="Wall55" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -45, 4, -70 )
+
+[node name="Wall56" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -53, 4, -70 )
+
+[node name="Wall57" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -61, 4, -70 )
+
+[node name="Wall58" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -25, 4, -50 )
+
+[node name="Wall59" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -25, 4, -42 )
+
+[node name="Wall60" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -25, 4, -58 )
+
+[node name="Wall61" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -25, 4, -66 )
+
+[node name="Wall63" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -40, 4, -42 )
+
+[node name="Wall64" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -48, 4, -42 )
+
+[node name="Wall65" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -32, 4, -42 )
+
+[node name="Wall66" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -24, 4, -42 )
+
+[node name="Wall62" parent="Level/Arena" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -25, 4, -74 )
+
+[node name="Ramp" parent="Level/Arena" instance=ExtResource( 8 )]
+transform = Transform( -6, 0, -2.18557e-07, 0, 1, 0, 5.24537e-07, 0, -2.5, -23, 0, -17 )
+
+[node name="Ramp2" parent="Level/Arena" instance=ExtResource( 8 )]
+transform = Transform( -6, 0, -2.18557e-07, 0, 1, 0, 5.24537e-07, 0, -2.5, -23, 1, -12 )
+
+[node name="Ramp3" parent="Level/Arena" instance=ExtResource( 8 )]
+transform = Transform( -6, 0, -2.18557e-07, 0, 1, 0, 5.24537e-07, 0, -2.5, -23, 2, -7 )
+
+[node name="Ramp4" parent="Level/Arena" instance=ExtResource( 8 )]
+transform = Transform( -6, 0, -2.18557e-07, 0, 1, 0, 5.24537e-07, 0, -2.5, -23, 3, -2 )
+
+[node name="StartBox" type="StaticBody" parent="Level/Arena"]
+transform = Transform( -2.62268e-07, 0, 16.08, 0, 2.4, 0, -6, 0, -7.02879e-07, -20, 1, -3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Arena/StartBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 1.42109e-14, 0, 1, -1.16667, 0.416667, -0.995025 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Arena/StartBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 1.06581e-14, 0, 1, -1.16667, 0.416667, -0.995025 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="StartBox2" type="StaticBody" parent="Level/Arena"]
+transform = Transform( -6, 0, -1.40576e-06, 0, 2.4, 0, 5.24537e-07, 0, -16.08, -66, -1, -22 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Arena/StartBox2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 1.42109e-14, 0, 1, -1.16667, 0.416667, -0.995025 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Arena/StartBox2"]
+transform = Transform( 1.1, 0, 2.34293e-08, 0, 0.999999, 0, 3.26207e-09, 0, 0.999999, -1.16667, 0.416666, -0.995024 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="Enemy" parent="Level/Arena" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 6, 4 )
+
+[node name="Enemy2" parent="Level/Arena" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 1, -31 )
+
+[node name="Enemy3" parent="Level/Arena" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -47 )
+
+[node name="Enemy4" parent="Level/Arena" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -64 )
+
+[node name="LevelEnd" parent="Level/Arena" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 1, -56 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
+
+[node name="Transition" parent="." instance=ExtResource( 7 )]
 
 [editable path="Level/Floor"]
 [editable path="Level/IntroRoom/Wall"]
@@ -146,3 +509,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
 [editable path="Level/IntroRoom/Wall14"]
 [editable path="Level/IntroRoom/Wall15"]
 [editable path="Level/IntroRoom/Wall16"]
+[editable path="Level/IntroHallway/Wall"]
+[editable path="Level/IntroHallway/Wall7"]
+[editable path="Level/IntroHallway/Wall2"]
+[editable path="Level/IntroHallway/Wall5"]
+[editable path="Level/IntroHallway/Wall12"]
+[editable path="Level/IntroHallway/Wall6"]
+[editable path="Level/IntroHallway/Wall3"]
+[editable path="Level/IntroHallway/Wall4"]
+[editable path="Level/IntroHallway/Wall8"]
+[editable path="Level/IntroHallway/Wall9"]
+[editable path="Level/IntroHallway/Wall10"]
+[editable path="Level/IntroHallway/Wall11"]
+[editable path="Level/IntroHallway/Wall13"]
+[editable path="Level/IntroHallway/Wall14"]
+[editable path="Level/IntroHallway/Wall15"]
+[editable path="Level/IntroHallway/Wall16"]
+[editable path="Level/IntroHallway/Wall17"]
+[editable path="Level/IntroHallway/Wall18"]
+[editable path="Level/IntroHallway/Wall19"]
+[editable path="Level/IntroHallway/Wall20"]
+[editable path="Level/IntroHallway/Wall21"]
+[editable path="Level/IntroHallway/Wall22"]
+[editable path="Level/IntroHallway/Wall23"]
+[editable path="Level/IntroHallway/Wall24"]
+[editable path="Level/IntroHallway/Wall25"]
+[editable path="Level/IntroHallway/Wall26"]
+[editable path="Level/IntroHallway/Wall27"]
