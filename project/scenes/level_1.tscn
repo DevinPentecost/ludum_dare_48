@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/level_pieces/floor.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://objects/level_pieces/ramp.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/level_end/LevelEnd.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/level_1.gd" type="Script" id=10]
+[ext_resource path="res://objects/environment/minecart.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/environment/barrel.tscn" type="PackedScene" id=12]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -36,6 +38,7 @@ transform = Transform( 6, 0, 0, 0, 2.4, 0, 0, 0, 16.08, -20, 1, -3 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/IntroRoom/StartBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00931239, -0.0160313, -0.00341754 )
 mesh = SubResource( 2 )
 material/0 = ExtResource( 4 )
 
@@ -489,6 +492,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -64 )
 
 [node name="LevelEnd" parent="Level/Arena" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 1, -56 )
+
+[node name="Barrel1" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.663464, 0, 0, 0, 0.663464, 0, 0, 0, 0.663464, 12.7941, 0, -1.65276 )
+
+[node name="Barrel2" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.663464, 0, 0, 0, 0.663464, 0, 0, 0, 0.663464, 12.7941, 0, -4.22457 )
+
+[node name="Barrel3" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.59616, 0, -0.291166, 0, 0.663464, 0, 0.291166, 0, 0.59616, 10.0472, 0, -2.60545 )
+
+[node name="Barrel4" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.663464, 0, 0, 0, 0.663464, 0, 0, 0, 0.663464, -48.0564, 0, -36.7057 )
+
+[node name="Barrel5" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.510269, 0, -0.42404, 0, 0.663464, 0, 0.42404, 0, 0.510269, -43.709, 0, -64.4494 )
+
+[node name="Barrel6" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.510269, 0, -0.42404, 0, 0.663464, 0, 0.42404, 0, 0.510269, -42.0653, 0, -66.4273 )
+
+[node name="Barrel7" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( 0.272413, 0, -0.604959, 0, 0.663464, 0, 0.604959, 0, 0.272413, -45.2128, 0, -66.9377 )
+
+[node name="Minecart1" parent="Level" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 0.721597, 0, 0, 0, 1, -12.976, 3.69956, -7.60112 )
+
+[node name="Minecart2" parent="Level" instance=ExtResource( 11 )]
+transform = Transform( 0.781923, 0, -0.623375, 0, 0.721597, 0, 0.623375, 0, 0.781923, -62.0716, 0, -45.6407 )
+
+[node name="Minecart3" parent="Level" instance=ExtResource( 11 )]
+transform = Transform( -0.76312, 0, -0.646257, 0, 0.721597, 0, 0.646257, 0, -0.76312, -32.5012, 0, -9.82785 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
