@@ -57,6 +57,17 @@ func _look_for_player():
 		if collider != null:
 			if collider == _player.collider or collider == _player:
 				_notice_player()
+				return true
+	return false
+
+func _hear_player_through_wall():
+	#Shoot a ray so we aren't looking through walls
+	_sight.cast_to = _sight.to_local(_player.target.global_transform.origin)
+	var collider = _sight.get_collider()
+	if collider != null:
+		if collider == _player.collider or collider == _player:
+			return true
+	return false
 
 func _die():
 	$AnimatedSprite3D.play("die")
@@ -102,8 +113,8 @@ func _on_Player_fired():
 	
 	#Figure out if the player was close enough to hear
 	var distance = transform.origin.distance_squared_to(_player.transform.origin)
-	if enemy_state == EnemyState.SLEEP:
-		enemy_state = EnemyState.CHASE
+	if _hear_player_through_wall() and distance < hearing_range_squared:
+		_notice_player()
 		print("Heard the player.")
 
 func _notice_player():
