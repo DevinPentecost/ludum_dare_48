@@ -85,10 +85,10 @@ stream = ExtResource( 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.4097
-margin_top = -235.318
-margin_right = 4.4097
-margin_bottom = -183.318
+margin_left = 1.10614
+margin_top = -177.27
+margin_right = 1.10614
+margin_bottom = -125.27
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
@@ -97,8 +97,8 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="PlayerUI"]
-margin_left = 135.0
-margin_right = 185.0
+margin_left = 95.0
+margin_right = 145.0
 margin_bottom = 52.0
 
 [node name="HealthLabel" type="Label" parent="PlayerUI/VBox"]
@@ -130,8 +130,8 @@ __meta__ = {
 }
 
 [node name="Portrait" type="AnimatedSprite" parent="PlayerUI/VBox"]
-position = Vector2( 25.5, 32.9563 )
-scale = Vector2( 0.111278, 0.111278 )
+position = Vector2( 24.3202, 23.7535 )
+scale = Vector2( 0.0671622, 0.0671622 )
 frames = SubResource( 6 )
 animation = "green"
 
