@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 TransitionSingleton="*res://objects/gui/transition/TransitionSingleton.gd"
+MusicSingleton="*res://objects/gui/MusicSingleton.gd"
 
 [display]
 

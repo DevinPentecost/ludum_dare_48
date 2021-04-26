@@ -13,3 +13,6 @@ func _on_LevelEnd_body_entered(body):
 		print('Level has ended!')
 		$CollisionShape.disabled = true
 		emit_signal("level_ended")
+		
+		for enemy in get_tree().get_nodes_in_group("enemy"):
+			enemy.queue_free()

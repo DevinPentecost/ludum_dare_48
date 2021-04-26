@@ -148,6 +148,8 @@ func _movement_towards_target():
 func take_damage(damage):
 	player_health -= damage
 	emit_signal("health_changed", player_health)
+	$AudioStreamPlayer.play_ow()
+	$Camera/ViewModel.hurt()
 	if player_health < 0:
 		die()
 
@@ -160,7 +162,7 @@ func die():
 	#Add a horrible red screen or something
 	$Camera/ViewModel.die()
 	
-	#TODO: Play a sad die sound
+	$AudioStreamPlayer.play_die()
 	player_dead = true
 	emit_signal("player_died")
 	
@@ -197,7 +199,9 @@ func _unhandled_key_input(event: InputEventKey):
 	
 	if event.is_action_pressed("player_pause"):
 		if not player_dead: die()
-		else: get_tree().quit()
+		else:
+			var Intro = load("res://test_scenes/caleb_intro.tscn")
+			TransitionSingleton.transition_to_scene(Intro)
 	elif event.is_action("player_forward"):
 		_movement_helper.forward = event.pressed
 	elif event.is_action("player_backwards"):
@@ -233,4 +237,5 @@ func _on_HurtBox_body_entered(body):
 		#We got hit!
 		body = body as Bullet
 		take_damage(body.damage)
+		body.queue_free()
 

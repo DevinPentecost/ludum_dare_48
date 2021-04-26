@@ -4,6 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://objects/player/ViewModel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/level_pieces/level_1_env.tres" type="Environment" id=4]
+[ext_resource path="res://objects/player/ow.ogg" type="AudioStream" id=5]
 [ext_resource path="res://objects/player/paw.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/player/PlayerShape.tres" type="Shape" id=7]
 [ext_resource path="res://objects/player/paw_mirror.tscn" type="PackedScene" id=8]
@@ -13,6 +14,22 @@ extents = Vector3( 0.312267, 6.24635, 0.473574 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.312267, 6.24635, 0.473574 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends AudioStreamPlayer
+
+var ow_sound = preload(\"res://objects/player/ow.ogg\")
+var die_sound = preload(\"res://objects/player/die.ogg\")
+
+func play_ow():
+	if not playing:
+		stream = ow_sound
+		play()
+
+func play_die():
+	stream = die_sound
+	play()
+"
 
 [node name="Player" type="KinematicBody" groups=[
 "player",
@@ -69,5 +86,9 @@ collision_mask = 2
 [node name="CollisionShape" type="CollisionShape" parent="HurtBox"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.63892, 0 )
 shape = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+script = SubResource( 3 )
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

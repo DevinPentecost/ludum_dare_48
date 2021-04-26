@@ -7,12 +7,19 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
-const level_1 = preload(\"res://scenes/level_1.tscn\")
+const level_1 = preload(\"res://scenes/intro.tscn\")
+
+func _ready():
+	set_process_input(true)
 
 func _on_TextureButton_pressed():
 	
 	yield(TransitionSingleton.get_current_screenshot(), \"completed\")
 	get_tree().change_scene_to(level_1)
+
+func _input(event):
+	if event is InputEventKey and event.is_action_released(\"player_pause\"):
+		get_tree().quit()
 "
 
 [sub_resource type="SpatialMaterial" id=20]

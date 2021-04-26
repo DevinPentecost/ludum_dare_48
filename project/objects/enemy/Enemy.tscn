@@ -136,7 +136,7 @@ script = ExtResource( 2 )
 transform = Transform( 4.62633, 0, 0, 0, 5.27192, 0, 0, 0, 24.3897, 0, 1.66697, 0 )
 billboard = 2
 frames = SubResource( 16 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -152,6 +152,7 @@ shape = ExtResource( 3 )
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40555, 0 )
 unit_db = 21.176
+pitch_scale = 0.75
 script = SubResource( 17 )
 
 [node name="Sight" type="RayCast" parent="."]
