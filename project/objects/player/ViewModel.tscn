@@ -130,7 +130,6 @@ __meta__ = {
 }
 
 [node name="Portrait" type="AnimatedSprite" parent="PlayerUI/VBox"]
-visible = false
 position = Vector2( 24.3202, 23.7535 )
 scale = Vector2( 0.0671622, 0.0671622 )
 frames = SubResource( 6 )
