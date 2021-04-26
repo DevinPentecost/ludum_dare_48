@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/level_pieces/floor.tscn" type="PackedScene" id=2]
@@ -9,12 +9,14 @@
 [ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/level_pieces/ramp.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/level_end/LevelEnd.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/level_1.gd" type="Script" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="CubeMesh" id=2]
 
 [node name="Level1" type="Spatial"]
+script = ExtResource( 10 )
 
 [node name="Level" type="Spatial" parent="."]
 
@@ -492,6 +494,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 1, -56 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 5, 0 )
 
 [node name="Transition" parent="." instance=ExtResource( 7 )]
+
+[connection signal="level_ended" from="Level/Arena/LevelEnd" to="." method="_on_LevelEnd_level_ended"]
 
 [editable path="Level/Floor"]
 [editable path="Level/IntroRoom/Wall"]
