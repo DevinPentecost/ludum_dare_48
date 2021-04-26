@@ -167,10 +167,9 @@ func _handle_player_fire():
 	
 	#Spawn a bullet
 	var new_bullet = BulletScene.instance()
-	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
-	new_bullet.transform.basis.x = transform.basis.x
 	get_tree().root.add_child(new_bullet)
-	
+	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
+	new_bullet.shoot_at($BulletSpawner/shoot_target)
 	emit_signal("fired")
 	
 
