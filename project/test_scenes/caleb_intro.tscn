@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://objects/fence/fence.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_scenes/dog.gd" type="Script" id=2]
 [ext_resource path="res://scenes/intro.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
@@ -249,6 +250,8 @@ transform = Transform( 0.0792073, 0, -0.996858, 0, 1, 0, 0.996858, 0, 0.0792073,
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.83925, 0.543746, 0, -0.543746, 0.83925, 0, 15.1191, 0 )
 directional_shadow_mode = 0
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_right = 1.0

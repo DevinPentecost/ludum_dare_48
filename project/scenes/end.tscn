@@ -21,12 +21,9 @@ func _input(event):
 	if event is InputEventMouseButton or event is InputEventKey:
 		if not can_restart:
 			return
-			
-		yield(TransitionSingleton.get_current_screenshot(), \"completed\")
 		
 		var StartScreen = load(\"res://test_scenes/caleb_intro.tscn\")
-		
-		get_tree().change_scene_to(StartScreen)
+		TransitionSingleton.transition_to_scene(StartScreen)
 "
 
 [node name="Control" type="Control"]

@@ -200,8 +200,12 @@ func _unhandled_key_input(event: InputEventKey):
 	if event.is_action_pressed("player_pause"):
 		if not player_dead: die()
 		else:
+			for enemy in get_tree().get_nodes_in_group("enemy"):
+				enemy.queue_free()
+				
 			var Intro = load("res://test_scenes/caleb_intro.tscn")
 			TransitionSingleton.transition_to_scene(Intro)
+			
 	elif event.is_action("player_forward"):
 		_movement_helper.forward = event.pressed
 	elif event.is_action("player_backwards"):
