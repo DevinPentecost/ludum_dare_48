@@ -1,21 +1,21 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/fence/fence.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_scenes/dog.gd" type="Script" id=2]
 [ext_resource path="res://scenes/intro.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
-const level_1 = preload(\"res://scenes/intro.tscn\")
+const intro = preload(\"res://scenes/intro.tscn\")
 
 func _ready():
 	set_process_input(true)
 
 func _on_TextureButton_pressed():
 	
-	yield(TransitionSingleton.get_current_screenshot(), \"completed\")
-	get_tree().change_scene_to(level_1)
+	TransitionSingleton.transition_to_scene(intro)
 
 func _input(event):
 	if event is InputEventKey and event.is_action_released(\"player_pause\"):
@@ -238,6 +238,8 @@ transform = Transform( 0.0792073, 0, -0.996858, 0, 1, 0, 0.996858, 0, 0.0792073,
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.83925, 0.543746, 0, -0.543746, 0.83925, 0, 15.1191, 0 )
 directional_shadow_mode = 0
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_right = 1.0
