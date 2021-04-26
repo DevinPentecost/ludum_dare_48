@@ -33,9 +33,9 @@ func _on_LevelEnd_level_ended():
 	TransitionSingleton.transition_to_scene(End)
 "
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=2]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=3]
 
 [sub_resource type="BoxShape" id=4]
 
@@ -171,10 +171,10 @@ transform = Transform( -0.999943, 0, -0.0106288, 0, 1, 0, 0.0106288, 0, -0.99994
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 16.6024, 1.29097, 49.3727 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised2" type="StaticBody" parent="Level/Cave"]
@@ -184,7 +184,7 @@ transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 33.1602, 1.29097, 49.3727 )
 shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised2"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised3" type="StaticBody" parent="Level/Cave"]
@@ -194,7 +194,7 @@ transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 49.3588, 1.29097, 49.3727 )
 shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised3"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised4" type="StaticBody" parent="Level/Cave"]
@@ -204,7 +204,7 @@ transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 68.009, 1.29097, 49.3727 )
 shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised4"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised5" type="StaticBody" parent="Level/Cave"]
@@ -214,7 +214,7 @@ transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 30, 56.7897, -11.0523, 80.35 )
 shape = SubResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised5"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised6" type="StaticBody" parent="Level/Cave"]
@@ -224,7 +224,7 @@ transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 85.5097, 1.29097, 49.3727 )
 shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised6"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised7" type="StaticBody" parent="Level/Cave"]
@@ -234,7 +234,7 @@ transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 102.068, 1.29097, 49.3727 )
 shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised7"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised8" type="StaticBody" parent="Level/Cave"]
@@ -244,7 +244,7 @@ transform = Transform( 9.53191, 0, -0.60474, -1.0565, 2.81091, -0.666102, 2.8331
 shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised8"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised9" type="StaticBody" parent="Level/Cave"]
@@ -255,7 +255,7 @@ shape = SubResource( 11 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised9"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised10" type="StaticBody" parent="Level/Cave"]
@@ -265,7 +265,7 @@ transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.44
 shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised10"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised11" type="StaticBody" parent="Level/Cave"]
@@ -275,7 +275,7 @@ transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.44
 shape = SubResource( 13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised11"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised12" type="StaticBody" parent="Level/Cave"]
@@ -285,7 +285,7 @@ transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.44
 shape = SubResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised12"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised13" type="StaticBody" parent="Level/Cave"]
@@ -295,7 +295,7 @@ transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.44
 shape = SubResource( 15 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised13"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised14" type="StaticBody" parent="Level/Cave"]
@@ -305,7 +305,7 @@ transform = Transform( 4.60346, 0.621379, 1.72648, -0.974633, 2.93494, -0.365526
 shape = SubResource( 16 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised14"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised15" type="StaticBody" parent="Level/Cave"]
@@ -315,7 +315,7 @@ transform = Transform( 5.47081, 0, -1.67416, 0, 3, 0, 8.3708, 0, 1.09416, 54.263
 shape = SubResource( 17 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised15"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised16" type="StaticBody" parent="Level/Cave"]
@@ -325,7 +325,7 @@ transform = Transform( 0.35196, 0, 1.99876, 0, 3, 0, -9.9938, 0, 0.0703921, 16.3
 shape = SubResource( 18 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised16"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised17" type="StaticBody" parent="Level/Cave"]
@@ -335,7 +335,7 @@ transform = Transform( 9.53706, 0, -0.601478, 0, 3, 0, 3.00739, 0, 1.90741, 16.3
 shape = SubResource( 19 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised17"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Wall17" parent="Level/Cave" instance=ExtResource( 3 )]
@@ -441,7 +441,7 @@ transform = Transform( 7.55343, -1.34169, 0.958007, 3.77687, 2.68326, 0.479023, 
 shape = SubResource( 20 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised18"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised19" type="StaticBody" parent="Level/Cave"]
@@ -452,7 +452,7 @@ shape = SubResource( 21 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised19"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised20" type="StaticBody" parent="Level/Cave"]
@@ -462,7 +462,7 @@ transform = Transform( 8.27306, 0, -1.1235, 0, 3, 0, 5.61751, 0, 1.65461, 173.04
 shape = SubResource( 22 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised20"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Raised21" type="StaticBody" parent="Level/Cave"]
@@ -474,7 +474,7 @@ shape = SubResource( 23 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised21"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Enemy2" parent="Level/Cave" instance=ExtResource( 5 )]
@@ -565,7 +565,7 @@ transform = Transform( 10, 0, 0, 0, -0.776457, 1.93185, 0, -2.89778, -0.517638, 
 shape = SubResource( 24 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier1"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier2" type="StaticBody" parent="Level/Staircase"]
@@ -576,7 +576,7 @@ shape = SubResource( 25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier2"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier3" type="StaticBody" parent="Level/Staircase"]
@@ -587,7 +587,7 @@ shape = SubResource( 26 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier3"]
 transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier4" type="StaticBody" parent="Level/Staircase"]
@@ -598,7 +598,7 @@ shape = SubResource( 27 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier4"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier5" type="StaticBody" parent="Level/Staircase"]
@@ -609,7 +609,7 @@ shape = SubResource( 28 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier5"]
 transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier6" type="StaticBody" parent="Level/Staircase"]
@@ -620,7 +620,7 @@ shape = SubResource( 29 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier6"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier7" type="StaticBody" parent="Level/Staircase"]
@@ -631,7 +631,7 @@ shape = SubResource( 30 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier7"]
 transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier8" type="StaticBody" parent="Level/Staircase"]
@@ -642,7 +642,7 @@ shape = SubResource( 31 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier8"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier9" type="StaticBody" parent="Level/Staircase"]
@@ -653,7 +653,7 @@ shape = SubResource( 32 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier9"]
 transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier10" type="StaticBody" parent="Level/Staircase"]
@@ -664,7 +664,7 @@ shape = SubResource( 33 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier10"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier11" type="StaticBody" parent="Level/Staircase"]
@@ -675,7 +675,7 @@ shape = SubResource( 34 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier11"]
 transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="barrier12" type="StaticBody" parent="Level/Staircase"]
@@ -686,7 +686,7 @@ shape = SubResource( 35 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier12"]
 transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="Level/Staircase"]
@@ -1761,7 +1761,7 @@ transform = Transform( 18.9138, 0, -9.80904, 0, 1, 0, 16.3484, 0, 11.3483, 131.0
 shape = SubResource( 36 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/EndPlatform"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Stairs" type="Spatial" parent="Level/Staircase"]
