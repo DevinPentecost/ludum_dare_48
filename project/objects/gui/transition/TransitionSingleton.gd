@@ -17,3 +17,9 @@ func get_current_screenshot():
 	image_data = image.get_data()
 	image_data.decompress()
 	image_data.lock()
+
+func transition_to_scene(scene):
+	
+	yield(get_current_screenshot(), "completed")
+	get_tree().change_scene_to(scene)
+	
