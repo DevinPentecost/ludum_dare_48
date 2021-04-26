@@ -179,6 +179,14 @@ func _handle_player_fire():
 	
 	$Camera/ViewModel.fire()
 	
+	
+	$Camera/PawR/paws/AnimationPlayer.stop()
+	$Camera/PawR/paws/AnimationPlayer.play("bark")
+	$Camera/PawR/paws/AnimationPlayer.queue("idle-loop")
+	$Camera/PawL/paws/AnimationPlayer.stop()
+	$Camera/PawL/paws/AnimationPlayer.play("bark")
+	$Camera/PawL/paws/AnimationPlayer.queue("idle-loop")
+	
 	#Spawn a bullet
 	var new_bullet = BulletScene.instance()
 	get_tree().root.add_child(new_bullet)

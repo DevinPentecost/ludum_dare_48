@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://objects/gui/view_model/bang.ogg" type="AudioStream" id=1]
-[ext_resource path="res://objects/gui/view_model/view_model_fire.png" type="Texture" id=2]
-[ext_resource path="res://objects/gui/view_model/view_model_normal.png" type="Texture" id=3]
+[ext_resource path="res://objects/gui/view_model/CC0_barking_01.ogg" type="AudioStream" id=1]
+[ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=2]
+[ext_resource path="res://objects/gui/view_model/bite0000.png" type="Texture" id=3]
 [ext_resource path="res://objects/player/ViewModel.gd" type="Script" id=4]
-[ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=5]
+[ext_resource path="res://objects/gui/view_model/bite0002.png" type="Texture" id=5]
+[ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=6]
+[ext_resource path="res://objects/gui/view_model/portrait0001.png" type="Texture" id=7]
+[ext_resource path="res://objects/gui/view_model/portrait0002.png" type="Texture" id=8]
+[ext_resource path="res://objects/gui/view_model/portrait0000.png" type="Texture" id=9]
+[ext_resource path="res://objects/gui/view_model/portrait0003.png" type="Texture" id=10]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 162.0
@@ -17,14 +22,43 @@ noise = SubResource( 1 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "fire",
+"speed": 10.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0.188235, 0.188235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "red",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "yellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "dead",
 "speed": 5.0
 } ]
 
@@ -39,7 +73,7 @@ billboard = 1
 texture = SubResource( 2 )
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform( 0.5, 0, 2.18557e-08, 0, 0.5, 0, 2.18557e-08, 0, 1, 0.676982, -0.407712, -1.37478 )
+transform = Transform( 1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 0, 0, -1.375 )
 frames = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -51,30 +85,54 @@ stream = ExtResource( 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.4097
+margin_top = -235.318
+margin_right = 4.4097
+margin_bottom = -183.318
 grow_horizontal = 0
 grow_vertical = 0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthLabel" type="Label" parent="PlayerUI"]
+[node name="VBox" type="VBoxContainer" parent="PlayerUI"]
+margin_left = 135.0
+margin_right = 185.0
+margin_bottom = 52.0
+
+[node name="HealthLabel" type="Label" parent="PlayerUI/VBox"]
+visible = false
+margin_left = -253.0
 margin_top = 13.0
-margin_right = 46.0
+margin_right = -207.0
 margin_bottom = 27.0
 text = "Health:"
 
-[node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
-margin_left = 50.0
-margin_right = 100.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 50, 0 )
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI/VBox"]
+margin_right = 50.0
+margin_bottom = 4.0
+rect_min_size = Vector2( 50, 4 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 value = 100.0
 rounded = true
+percent_visible = false
 
-[node name="Portrait" type="TextureRect" parent="PlayerUI"]
-margin_left = 104.0
-margin_right = 232.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
+[node name="Portrait2" type="TextureRect" parent="PlayerUI/VBox"]
+visible = false
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 48.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="AnimatedSprite" parent="PlayerUI/VBox"]
+position = Vector2( 25.5, 32.9563 )
+scale = Vector2( 0.111278, 0.111278 )
+frames = SubResource( 6 )
+animation = "dead"
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
