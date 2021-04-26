@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/gui/view_model/CC0_barking_01.ogg" type="AudioStream" id=1]
 [ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=2]
 [ext_resource path="res://objects/gui/view_model/bite0000.png" type="Texture" id=3]
 [ext_resource path="res://objects/player/ViewModel.gd" type="Script" id=4]
-[ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=5]
 [ext_resource path="res://objects/gui/view_model/bite0002.png" type="Texture" id=5]
+[ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=6]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 162.0
@@ -76,6 +76,6 @@ rounded = true
 margin_left = 104.0
 margin_right = 232.0
 margin_bottom = 40.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
