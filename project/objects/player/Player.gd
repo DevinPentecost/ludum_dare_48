@@ -97,8 +97,7 @@ func _ready():
 	set_process_unhandled_key_input(true)
 	set_process_unhandled_input(true)
 	set_process_input(true)
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _player_movement(delta):
 	if player_dead: return
@@ -168,10 +167,9 @@ func _handle_player_fire():
 	
 	#Spawn a bullet
 	var new_bullet = BulletScene.instance()
-	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
-	new_bullet.transform.basis.x = transform.basis.x
 	get_tree().root.add_child(new_bullet)
-	
+	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
+	new_bullet.shoot_at($BulletSpawner/shoot_target)
 	emit_signal("fired")
 	
 
@@ -203,6 +201,8 @@ func _input(event):
 		_handle_player_look(event)
 	
 	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 		if event.button_index == 1 and event.pressed:
 			_handle_player_fire()
 
