@@ -4,7 +4,7 @@
 [ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=2]
 [ext_resource path="res://objects/gui/view_model/bite0000.png" type="Texture" id=3]
 [ext_resource path="res://objects/player/ViewModel.gd" type="Script" id=4]
-[ext_resource path="res://objects/gui/view_model/bite0002.png" type="Texture" id=5]
+[ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=5]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 162.0
@@ -46,5 +46,35 @@ frames = SubResource( 3 )
 stream = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="PlayerUI" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthLabel" type="Label" parent="PlayerUI"]
+margin_top = 13.0
+margin_right = 46.0
+margin_bottom = 27.0
+text = "Health:"
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerUI"]
+margin_left = 50.0
+margin_right = 100.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 50, 0 )
+value = 100.0
+rounded = true
+
+[node name="Portrait" type="TextureRect" parent="PlayerUI"]
+margin_left = 104.0
+margin_right = 232.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
