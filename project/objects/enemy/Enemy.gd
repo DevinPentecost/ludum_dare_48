@@ -1,4 +1,5 @@
 extends KinematicBody
+signal died
 
 const EnemyBulletScene = preload("res://objects/enemy/EnemyBullet.tscn")
 
@@ -6,6 +7,7 @@ export(float) var health = 100
 export(float) var hearing_range_squared = 100
 export(float) var sight_range_squared = 600
 export(float) var motion_speed = 3
+export(float) var gravity = 30
 
 onready var _player = get_tree().get_nodes_in_group("player")[0]
 onready var _sleep_timer = $SleepTimer
@@ -26,16 +28,28 @@ enum EnemyState {
 	DEAD,
 }
 var enemy_state = EnemyState.SLEEP
+var _current_fall_speed = 0
 
 
 func _physics_process(delta):
 	look_at(_player.target.global_transform.origin, Vector3.UP)
 	transform.basis.y = Vector3.UP
-	transform.origin.y = 0
+	#transform.origin.y = 0
 	
 	_look_for_player()
 	_try_attack()
 	_try_move()
+	_try_fall(delta)
+
+func _try_fall(delta):
+	#Apply gravity
+	_current_fall_speed -= gravity * delta
+	var movement = Vector3.ZERO
+	movement.y = _current_fall_speed
+	move_and_slide(movement)
+	
+	if get_slide_count():
+		_current_fall_speed = 0
 
 func _try_move():
 	if enemy_state == EnemyState.CHASE:
@@ -75,8 +89,10 @@ func _die():
 	$CollisionShape.disabled = true
 	$AudioStreamPlayer3D.play_die()
 	enemy_state = EnemyState.DEAD
+	emit_signal("died")
 	set_process(false)
 	set_physics_process(false)
+	
 
 func _take_hit(bullet: Bullet):
 	bullet.queue_free()

@@ -1,0 +1,1839 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/level_pieces/floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/level_pieces/wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/level_pieces/level_1_floor_material.tres" type="Material" id=4]
+[ext_resource path="res://objects/enemy/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/level_pieces/level_1_wall_material.tres" type="Material" id=6]
+[ext_resource path="res://objects/gui/transition/Transition.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Staircase.gd" type="Script" id=8]
+[ext_resource path="res://objects/level_end/LevelEnd.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Spawner.gd" type="Script" id=10]
+[ext_resource path="res://objects/level_pieces/ramp.tscn" type="PackedScene" id=11]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="Level2" type="Spatial"]
+
+[node name="Level" type="Spatial" parent="."]
+
+[node name="Floor" parent="Level" instance=ExtResource( 2 )]
+transform = Transform( 300, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0 )
+
+[node name="MeshInstance" parent="Level/Floor" index="1"]
+material/0 = ExtResource( 4 )
+
+[node name="IntroRoom" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5 )
+
+[node name="Enemy" parent="Level/IntroRoom" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6647, 0, 35.9813 )
+
+[node name="Wall13" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -23, 4, 42.6538 )
+
+[node name="MeshInstance" parent="Level/IntroRoom/Wall13" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall14" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -15, 4, 42.6538 )
+
+[node name="MeshInstance" parent="Level/IntroRoom/Wall14" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall15" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7, 4, 42.6538 )
+
+[node name="MeshInstance" parent="Level/IntroRoom/Wall15" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall16" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1, 4, 42.6538 )
+
+[node name="MeshInstance" parent="Level/IntroRoom/Wall16" index="1"]
+material/0 = ExtResource( 6 )
+
+[node name="Wall17" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1, 4, 30.3307 )
+
+[node name="Wall18" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -7, 4, 30.3307 )
+
+[node name="Wall19" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -15, 4, 30.3307 )
+
+[node name="Wall20" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -23, 4, 30.3307 )
+
+[node name="Wall21" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -0.999943, 0, -0.0106288, 0, 1, 0, 0.0106288, 0, -0.999943, -26.338, 4, 29.7909 )
+
+[node name="Wall22" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -0.999943, 0, -0.0106288, 0, 1, 0, 0.0106288, 0, -0.999943, -26.253, 4, 37.7905 )
+
+[node name="Wall23" parent="Level/IntroRoom" instance=ExtResource( 3 )]
+transform = Transform( -0.999943, 0, -0.0106288, 0, 1, 0, 0.0106288, 0, -0.999943, -26.168, 4, 45.79 )
+
+[node name="Cave" type="Spatial" parent="Level"]
+
+[node name="Raised" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 16.6024, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised2" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 33.1602, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised3" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 49.3588, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised3"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised4" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 68.009, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised4"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised4"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised5" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 30, 56.7897, -11.0523, 80.35 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised5"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised5"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised6" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 85.5097, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised6"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised6"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised7" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 2, 102.068, 1.29097, 49.3727 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised7"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised7"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised8" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 9.53191, 0, -0.60474, -1.0565, 2.81091, -0.666102, 2.83312, 1.04822, 1.78622, 80.3695, -1.75389, 24.0462 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised8"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised8"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised9" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -2.66986, 0, -1.9274, 0, 3, 0, 9.637, 0, -0.533972, 82.2442, -1.75389, 24.0462 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised9"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised9"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised10" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.445, 2.87036, 57.8857 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised10"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised10"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised11" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.445, 2.87036, 74.4435 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised11"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised11"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised12" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.445, 2.87036, 90.6421 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised12"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised12"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised13" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -4.37114e-07, 0, -2, 0, 3, 0, 10, 0, -8.74228e-08, 105.445, 2.87036, 109.292 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised13"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised13"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised14" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 4.60346, 0.621379, 1.72648, -0.974633, 2.93494, -0.365526, -8.82373, 0, 0.9411, 53.0249, -1.75389, 47.6203 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised14"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised14"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised15" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 5.47081, 0, -1.67416, 0, 3, 0, 8.3708, 0, 1.09416, 54.2634, -1.75389, 46.2129 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised15"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised15"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised16" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 0.35196, 0, 1.99876, 0, 3, 0, -9.9938, 0, 0.0703921, 16.3123, -1.75389, 22.3381 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised16"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised16"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised17" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 9.53706, 0, -0.601478, 0, 3, 0, 3.00739, 0, 1.90741, 16.3783, -1.75389, 20.4646 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised17"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised17"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Wall17" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 29.5892, 4, 11.0306 )
+
+[node name="Wall18" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 25.5892, 4, 17.9588 )
+
+[node name="Wall19" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 21.5892, 4, 24.887 )
+
+[node name="Wall20" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, 17.5892, 4, 31.8152 )
+
+[node name="Wall21" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 55.7607, 4, -6.1861 )
+
+[node name="Wall22" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 48.8325, 4, -2.1861 )
+
+[node name="Wall23" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 41.9043, 4, 1.8139 )
+
+[node name="Wall24" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 34.9761, 4, 5.8139 )
+
+[node name="Wall25" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 83.2064, 4, 6.27324 )
+
+[node name="Wall26" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 76.2782, 4, 2.27323 )
+
+[node name="Wall27" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 69.35, 4, -1.72676 )
+
+[node name="Wall28" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 62.4218, 4, -5.72676 )
+
+[node name="Wall29" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -1.78814e-07, 0, 1, 0, 1, 0, -1, 0, -1.78814e-07, 114.41, 4, 8.21013 )
+
+[node name="Wall30" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -1.78814e-07, 0, 1, 0, 1, 0, -1, 0, -1.78814e-07, 106.41, 4, 8.21012 )
+
+[node name="Wall31" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -1.78814e-07, 0, 1, 0, 1, 0, -1, 0, -1.78814e-07, 98.4098, 4, 8.21012 )
+
+[node name="Wall32" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -1.78814e-07, 0, 1, 0, 1, 0, -1, 0, -1.78814e-07, 90.4098, 4, 8.21013 )
+
+[node name="Wall33" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 143.875, 3.99854, 0.972509 )
+
+[node name="Wall34" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 136.108, 4, 3.03354 )
+
+[node name="Wall35" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 128.381, 4, 5.10409 )
+
+[node name="Wall36" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 120.654, 4, 7.17464 )
+
+[node name="Wall37" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 174.516, 4, 7.29497 )
+
+[node name="Wall38" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 166.788, 4, 5.22441 )
+
+[node name="Wall39" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 159.061, 4, 3.15385 )
+
+[node name="Wall40" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 151.334, 4, 1.0833 )
+
+[node name="Wall41" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 185.113, 4, 35.5121 )
+
+[node name="Wall42" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 183.042, 4, 27.7847 )
+
+[node name="Wall43" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 180.972, 4, 20.0573 )
+
+[node name="Wall44" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 178.901, 4, 12.3299 )
+
+[node name="Wall45" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 205.807, 4, 58.9458 )
+
+[node name="Wall46" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 200.15, 4, 53.2889 )
+
+[node name="Wall47" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 194.494, 4, 47.6321 )
+
+[node name="Wall48" parent="Level/Cave" instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 188.837, 4, 41.9752 )
+
+[node name="Raised18" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 7.55343, -1.34169, 0.958007, 3.77687, 2.68326, 0.479023, -5.35547, 0, 1.68901, 105.461, 0.659977, 32.0976 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised18"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised18"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised19" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -4.89154, 0, -1.74439, 0, 3, 0, 8.72197, 0, -0.978308, 107.282, 0.659976, 32.5448 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised19"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised19"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised20" type="StaticBody" parent="Level/Cave"]
+transform = Transform( 8.27306, 0, -1.1235, 0, 3, 0, 5.61751, 0, 1.65461, 173.04, -1.75389, 24.1753 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised20"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised20"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Raised21" type="StaticBody" parent="Level/Cave"]
+transform = Transform( -3.13133, -0.121275, -1.8977, -3.01244, 2.85519, 0.117734, 9.00666, 0.912803, -0.620391, 174.591, -1.75389, 25.2284 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised21"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised21"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Enemy2" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 28.6647, 5.74311, 52.2437 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 28.6647, 5.74311, 42.4122 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy5" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 53.0665, 5.74311, 59.8592 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy6" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 53.0665, 5.74311, 50.0278 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy10" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 55.0637, 5.74311, 42.1058 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy12" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 67.4827, 5.74311, 44.3753 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy15" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 91.8845, 5.74311, 61.8223 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy16" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 91.8845, 5.74311, 51.9908 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy17" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 136.134, 5.74311, 28.8058 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy18" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 136.134, 5.74311, 18.9743 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy19" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 148.116, 5.74311, 34.1518 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Enemy20" parent="Level/Cave" instance=ExtResource( 5 )]
+transform = Transform( 1.33, 0, 0, 0, 1.33, 0, 0, 0, 1.33, 148.116, 5.74311, 24.3204 )
+health = 175.0
+hearing_range_squared = 1500.0
+sight_range_squared = 1200.0
+
+[node name="Staircase" type="Spatial" parent="Level"]
+script = ExtResource( 8 )
+
+[node name="Enemy" parent="Level/Staircase" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 158.1, 0, 93.3403 )
+
+[node name="Enemy2" parent="Level/Staircase" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144.067, 0, 84.1045 )
+
+[node name="barrier1" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 10, 0, 0, 0, -0.776457, 1.93185, 0, -2.89778, -0.517638, 116.756, 2.99266, 57.1364 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier1"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier1"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier2" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( -2.66986, 0, -1.9274, 9.30863, -0.776457, -0.515777, -2.49424, -2.89778, 0.138202, 118.631, 2.99266, 57.1364 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier2"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier3" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 9.27765, 1.08135, 0.193165, 0, -0.776457, 1.93185, 3.73166, -2.68846, -0.480246, 134.345, 2.99266, 57.9156 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier3"]
+transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier4" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( -1.54624, 1.08135, -1.83975, 9.30863, -0.776457, -0.515777, -3.31037, -2.68846, -0.591021, 136.084, 2.99266, 58.6152 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier4"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier4"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier5" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 5.71588, -2.37775, -0.424743, 0, -0.776457, 1.93185, -8.20541, -1.65633, -0.295875, 148.936, 2.99267, 53.264 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier5"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier5"]
+transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier6" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( -3.57269, -2.37775, -0.988278, 9.30863, -0.776457, -0.515777, 0.765054, -1.65633, 1.66051, 150.008, 2.99266, 51.7257 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier6"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier6"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier7" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 9.08504, 0.115403, 0.832205, -3.87079, -0.893163, 1.74532, 1.57451, -2.86163, -0.511181, 159.83, 3.35549, 44.2534 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier7"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier7"]
+transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier8" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 1.5844, 0.115403, -1.97324, 9.44326, -0.893163, 0.280081, -2.8835, -2.86163, -0.166994, 161.533, 2.62982, 44.5486 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier8"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier8"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier10" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( -3.54955, 1.27301, -1.66607, 8.73329, -0.502439, -0.914872, -3.33623, -2.66965, -0.622273, 174.894, 3.18731, 47.4143 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier10"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier10"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier11" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 5.71588, -2.37775, -0.424743, 0, -0.776457, 1.93185, -8.20541, -1.65633, -0.295875, 182.206, 2.99267, 41.878 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier11"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier11"]
+transform = Transform( 1, 0, 0, 0, 1, -1.49012e-08, 0, -8.9407e-08, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="barrier12" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( -3.57269, -2.37775, -0.988278, 9.30863, -0.776457, -0.515777, 0.765054, -1.65633, 1.66051, 183.277, 2.99266, 40.3398 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/barrier12"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/barrier12"]
+transform = Transform( 1, 0, -3.72529e-09, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Level/Staircase"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Wall41" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 194.944, 4, 81.2824 )
+
+[node name="Wall42" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 198.923, 4, 74.342 )
+
+[node name="Wall43" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 202.902, 4, 67.4016 )
+
+[node name="Wall44" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 206.88, 4, 60.4612 )
+
+[node name="Wall45" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 193.102, 4, 112.491 )
+
+[node name="Wall46" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 193.078, 4, 104.492 )
+
+[node name="Wall47" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 193.053, 4, 96.4915 )
+
+[node name="Wall48" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 193.029, 4, 88.4916 )
+
+[node name="Wall49" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 166.352, 4, 117.309 )
+
+[node name="Wall50" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 174.31, 4, 116.492 )
+
+[node name="Wall51" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 182.269, 4, 115.676 )
+
+[node name="Wall52" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 190.227, 4, 114.859 )
+
+[node name="Wall53" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 139.929, 4, 134.019 )
+
+[node name="Wall54" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 146.412, 4, 129.332 )
+
+[node name="Wall55" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 152.896, 4, 124.646 )
+
+[node name="Wall56" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 159.38, 4, 119.959 )
+
+[node name="Wall57" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, 123.388, 4, 113.716 )
+
+[node name="Wall58" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, 129.482, 4, 118.899 )
+
+[node name="Wall59" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, 135.577, 4, 124.081 )
+
+[node name="Wall60" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, 141.671, 4, 129.264 )
+
+[node name="Wall61" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, 93.0439, 4, 106.191 )
+
+[node name="Wall62" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, 100.913, 4, 107.632 )
+
+[node name="Wall63" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, 108.782, 4, 109.073 )
+
+[node name="Wall64" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, 116.651, 4, 110.514 )
+
+[node name="Wall65" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, 114.804, 4, 99.9898 )
+
+[node name="Wall66" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, 112.941, 4, 107.77 )
+
+[node name="Wall67" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, 111.077, 4, 115.55 )
+
+[node name="Wall68" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, 109.214, 4, 123.33 )
+
+[node name="Wall69" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, 107.783, 4, 69.525 )
+
+[node name="Wall70" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, 110.059, 4, 77.1943 )
+
+[node name="Wall71" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, 112.335, 4, 84.8637 )
+
+[node name="Wall72" parent="Level/Staircase" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, 114.611, 4, 92.5331 )
+
+[node name="WallsUp" type="Spatial" parent="Level/Staircase"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 146.608, 0, 80.3193 )
+
+[node name="Wall41" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 10.5132, 1.21371 )
+
+[node name="Wall42" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 10.5132, -5.72669 )
+
+[node name="Wall43" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 10.5132, -12.6671 )
+
+[node name="Wall44" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 10.5132, -19.6075 )
+
+[node name="Wall45" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 10.5132, 32.4228 )
+
+[node name="Wall46" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 10.5132, 24.4228 )
+
+[node name="Wall47" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 10.5132, 16.4229 )
+
+[node name="Wall48" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 10.5132, 8.42294 )
+
+[node name="Wall49" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 10.5132, 37.2406 )
+
+[node name="Wall50" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 10.5132, 36.4238 )
+
+[node name="Wall51" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 10.5132, 35.607 )
+
+[node name="Wall52" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 10.5132, 34.7903 )
+
+[node name="Wall53" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 10.5132, 53.95 )
+
+[node name="Wall54" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 10.5132, 49.2635 )
+
+[node name="Wall55" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 10.5132, 44.5771 )
+
+[node name="Wall56" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 10.5132, 39.8906 )
+
+[node name="Wall57" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 10.5132, 33.6478 )
+
+[node name="Wall58" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 10.5132, 38.8303 )
+
+[node name="Wall59" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 10.5132, 44.0128 )
+
+[node name="Wall60" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 10.5132, 49.1953 )
+
+[node name="Wall61" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 10.5132, 26.1221 )
+
+[node name="Wall62" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 10.5132, 27.5631 )
+
+[node name="Wall63" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 10.5132, 29.0041 )
+
+[node name="Wall64" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 10.5132, 30.445 )
+
+[node name="Wall65" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 10.5132, 19.9211 )
+
+[node name="Wall66" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 10.5132, 27.7011 )
+
+[node name="Wall67" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 10.5132, 35.481 )
+
+[node name="Wall68" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 10.5132, 43.2609 )
+
+[node name="Wall69" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 10.5132, -10.5437 )
+
+[node name="Wall70" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 10.5132, -2.87432 )
+
+[node name="Wall71" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 10.5132, 4.79507 )
+
+[node name="Wall72" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 10.5132, 12.4644 )
+
+[node name="Wall73" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 18.1932, 1.21371 )
+
+[node name="Wall74" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 18.1932, -5.72669 )
+
+[node name="Wall75" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 18.1932, -12.6671 )
+
+[node name="Wall76" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 18.1932, -19.6075 )
+
+[node name="Wall77" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 18.1932, 32.4228 )
+
+[node name="Wall78" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 18.1932, 24.4228 )
+
+[node name="Wall79" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 18.1932, 16.4229 )
+
+[node name="Wall80" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 18.1932, 8.42294 )
+
+[node name="Wall81" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 18.1932, 37.2406 )
+
+[node name="Wall82" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 18.1932, 36.4238 )
+
+[node name="Wall83" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 18.1932, 35.607 )
+
+[node name="Wall84" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 18.1932, 34.7903 )
+
+[node name="Wall85" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 18.1932, 53.95 )
+
+[node name="Wall86" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 18.1932, 49.2635 )
+
+[node name="Wall87" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 18.1932, 44.5771 )
+
+[node name="Wall88" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 18.1932, 39.8906 )
+
+[node name="Wall89" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 18.1932, 33.6478 )
+
+[node name="Wall90" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 18.1932, 38.8303 )
+
+[node name="Wall91" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 18.1932, 44.0128 )
+
+[node name="Wall92" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 18.1932, 49.1953 )
+
+[node name="Wall93" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 18.1932, 26.1221 )
+
+[node name="Wall94" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 18.1932, 27.5631 )
+
+[node name="Wall95" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 18.1932, 29.0041 )
+
+[node name="Wall96" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 18.1932, 30.445 )
+
+[node name="Wall97" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 18.1932, 19.9211 )
+
+[node name="Wall98" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 18.1932, 27.7011 )
+
+[node name="Wall99" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 18.1932, 35.481 )
+
+[node name="Wall100" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 18.1932, 43.2609 )
+
+[node name="Wall101" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 18.1932, -10.5437 )
+
+[node name="Wall102" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 18.1932, -2.87432 )
+
+[node name="Wall103" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 18.1932, 4.79507 )
+
+[node name="Wall104" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 18.1932, 12.4644 )
+
+[node name="Wall105" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 25.6466, 1.21371 )
+
+[node name="Wall106" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 25.6466, -5.72669 )
+
+[node name="Wall107" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 25.6466, -12.6671 )
+
+[node name="Wall108" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 25.6466, -19.6075 )
+
+[node name="Wall109" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 25.6466, 32.4228 )
+
+[node name="Wall110" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 25.6466, 24.4228 )
+
+[node name="Wall111" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 25.6466, 16.4229 )
+
+[node name="Wall112" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 25.6466, 8.42294 )
+
+[node name="Wall113" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 25.6466, 37.2406 )
+
+[node name="Wall114" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 25.6466, 36.4238 )
+
+[node name="Wall115" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 25.6466, 35.607 )
+
+[node name="Wall116" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 25.6466, 34.7903 )
+
+[node name="Wall117" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 25.6466, 53.95 )
+
+[node name="Wall118" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 25.6466, 49.2635 )
+
+[node name="Wall119" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 25.6466, 44.5771 )
+
+[node name="Wall120" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 25.6466, 39.8906 )
+
+[node name="Wall121" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 25.6466, 33.6478 )
+
+[node name="Wall122" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 25.6466, 38.8303 )
+
+[node name="Wall123" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 25.6466, 44.0128 )
+
+[node name="Wall124" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 25.6466, 49.1953 )
+
+[node name="Wall125" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 25.6466, 26.1221 )
+
+[node name="Wall126" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 25.6466, 27.5631 )
+
+[node name="Wall127" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 25.6466, 29.0041 )
+
+[node name="Wall128" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 25.6466, 30.445 )
+
+[node name="Wall129" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 25.6466, 19.9211 )
+
+[node name="Wall130" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 25.6466, 27.7011 )
+
+[node name="Wall131" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 25.6466, 35.481 )
+
+[node name="Wall132" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 25.6466, 43.2609 )
+
+[node name="Wall133" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 25.6466, -10.5437 )
+
+[node name="Wall134" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 25.6466, -2.87432 )
+
+[node name="Wall135" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 25.6466, 4.79507 )
+
+[node name="Wall136" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 25.6466, 12.4644 )
+
+[node name="Wall137" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0419, 25.6466, 35.3418 )
+
+[node name="Wall138" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0175, 25.6466, 43.3417 )
+
+[node name="Wall139" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9931, 25.6466, 51.3417 )
+
+[node name="Wall140" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9686, 25.6466, 59.3417 )
+
+[node name="Wall141" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -35.0517, 25.6466, 7.39311 )
+
+[node name="Wall142" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -31.0305, 25.6466, 14.3091 )
+
+[node name="Wall143" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -27.0094, 25.6466, 21.225 )
+
+[node name="Wall144" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -22.9882, 25.6466, 28.141 )
+
+[node name="Wall145" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -14.2943, 25.6466, -10.1543 )
+
+[node name="Wall146" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -20.7779, 25.6466, -5.46783 )
+
+[node name="Wall147" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -27.2615, 25.6466, -0.781372 )
+
+[node name="Wall148" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -33.7451, 25.6466, 3.90507 )
+
+[node name="Wall149" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, 0.234344, 25.6466, -37.8367 )
+
+[node name="Wall150" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -3.0374, 25.6466, -30.5363 )
+
+[node name="Wall151" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -6.30914, 25.6466, -23.2359 )
+
+[node name="Wall152" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -9.58086, 25.6466, -15.9356 )
+
+[node name="Wall153" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 24.7103, 25.6466, -28.5249 )
+
+[node name="Wall154" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 16.8411, 25.6466, -29.9659 )
+
+[node name="Wall155" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 8.97192, 25.6466, -31.4069 )
+
+[node name="Wall156" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 1.10277, 25.6466, -32.8479 )
+
+[node name="Wall157" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 54.7518, 25.6466, -37.1795 )
+
+[node name="Wall158" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 47.2165, 25.6466, -34.4929 )
+
+[node name="Wall159" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 39.6811, 25.6466, -31.8062 )
+
+[node name="Wall160" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 32.1457, 25.6466, -29.1196 )
+
+[node name="Wall161" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 39.0074, 25.6466, -20.9292 )
+
+[node name="Wall162" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 36.7312, 25.6466, -28.5986 )
+
+[node name="Wall163" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 34.4551, 25.6466, -36.268 )
+
+[node name="Wall164" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 32.179, 25.6466, -43.9373 )
+
+[node name="Wall165" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 60.3202, 25.6466, 1.94356 )
+
+[node name="Wall166" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 54.5144, 25.6466, -3.56026 )
+
+[node name="Wall167" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 48.7085, 25.6466, -9.06406 )
+
+[node name="Wall168" parent="Level/Staircase/WallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 42.9026, 25.6466, -14.5678 )
+
+[node name="MoreWallsUp" type="Spatial" parent="Level/Staircase/WallsUp"]
+
+[node name="Wall105" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 33.316, 1.21371 )
+
+[node name="Wall106" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 33.316, -5.72669 )
+
+[node name="Wall107" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 33.316, -12.6671 )
+
+[node name="Wall108" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 33.316, -19.6075 )
+
+[node name="Wall109" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 33.316, 32.4228 )
+
+[node name="Wall110" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 33.316, 24.4228 )
+
+[node name="Wall111" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 33.316, 16.4229 )
+
+[node name="Wall112" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 33.316, 8.42294 )
+
+[node name="Wall113" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 33.316, 37.2406 )
+
+[node name="Wall114" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 33.316, 36.4238 )
+
+[node name="Wall115" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 33.316, 35.607 )
+
+[node name="Wall116" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 33.316, 34.7903 )
+
+[node name="Wall117" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 33.316, 53.95 )
+
+[node name="Wall118" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 33.316, 49.2635 )
+
+[node name="Wall119" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 33.316, 44.5771 )
+
+[node name="Wall120" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 33.316, 39.8906 )
+
+[node name="Wall121" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 33.316, 33.6478 )
+
+[node name="Wall122" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 33.316, 38.8303 )
+
+[node name="Wall123" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 33.316, 44.0128 )
+
+[node name="Wall124" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 33.316, 49.1953 )
+
+[node name="Wall125" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 33.316, 26.1221 )
+
+[node name="Wall126" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 33.316, 27.5631 )
+
+[node name="Wall127" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 33.316, 29.0041 )
+
+[node name="Wall128" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 33.316, 30.445 )
+
+[node name="Wall129" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 33.316, 19.9211 )
+
+[node name="Wall130" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 33.316, 27.7011 )
+
+[node name="Wall131" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 33.316, 35.481 )
+
+[node name="Wall132" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 33.316, 43.2609 )
+
+[node name="Wall133" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 33.316, -10.5437 )
+
+[node name="Wall134" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 33.316, -2.87432 )
+
+[node name="Wall135" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 33.316, 4.79507 )
+
+[node name="Wall136" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 33.316, 12.4644 )
+
+[node name="Wall137" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0419, 33.316, 35.3418 )
+
+[node name="Wall138" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0175, 33.316, 43.3417 )
+
+[node name="Wall139" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9931, 33.316, 51.3417 )
+
+[node name="Wall140" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9686, 33.316, 59.3417 )
+
+[node name="Wall141" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -35.0517, 33.316, 7.39311 )
+
+[node name="Wall142" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -31.0305, 33.316, 14.3091 )
+
+[node name="Wall143" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -27.0094, 33.316, 21.225 )
+
+[node name="Wall144" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -22.9882, 33.316, 28.141 )
+
+[node name="Wall145" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -14.2943, 33.316, -10.1543 )
+
+[node name="Wall146" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -20.7779, 33.316, -5.46783 )
+
+[node name="Wall147" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -27.2615, 33.316, -0.781372 )
+
+[node name="Wall148" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -33.7451, 33.316, 3.90507 )
+
+[node name="Wall149" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, 0.234344, 33.316, -37.8367 )
+
+[node name="Wall150" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -3.0374, 33.316, -30.5363 )
+
+[node name="Wall151" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -6.30914, 33.316, -23.2359 )
+
+[node name="Wall152" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -9.58086, 33.316, -15.9356 )
+
+[node name="Wall153" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 24.7103, 33.316, -28.5249 )
+
+[node name="Wall154" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 16.8411, 33.316, -29.9659 )
+
+[node name="Wall155" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 8.97192, 33.316, -31.4069 )
+
+[node name="Wall156" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 1.10277, 33.316, -32.8479 )
+
+[node name="Wall157" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 54.7518, 33.316, -37.1795 )
+
+[node name="Wall158" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 47.2165, 33.316, -34.4929 )
+
+[node name="Wall159" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 39.6811, 33.316, -31.8062 )
+
+[node name="Wall160" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 32.1457, 33.316, -29.1196 )
+
+[node name="Wall161" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 39.0074, 33.316, -20.9292 )
+
+[node name="Wall162" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 36.7312, 33.316, -28.5986 )
+
+[node name="Wall163" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 34.4551, 33.316, -36.268 )
+
+[node name="Wall164" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 32.179, 33.316, -43.9373 )
+
+[node name="Wall165" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 60.3202, 33.316, 1.94356 )
+
+[node name="Wall166" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 54.5144, 33.316, -3.56026 )
+
+[node name="Wall167" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 48.7085, 33.316, -9.06406 )
+
+[node name="Wall168" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 42.9026, 33.316, -14.5678 )
+
+[node name="Wall169" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 41.5611, 1.21371 )
+
+[node name="Wall170" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 41.5611, -5.72669 )
+
+[node name="Wall171" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 41.5611, -12.6671 )
+
+[node name="Wall172" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 41.5611, -19.6075 )
+
+[node name="Wall173" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 41.5611, 32.4228 )
+
+[node name="Wall174" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 41.5611, 24.4228 )
+
+[node name="Wall175" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 41.5611, 16.4229 )
+
+[node name="Wall176" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 41.5611, 8.42294 )
+
+[node name="Wall177" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 41.5611, 37.2406 )
+
+[node name="Wall178" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 41.5611, 36.4238 )
+
+[node name="Wall179" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 41.5611, 35.607 )
+
+[node name="Wall180" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 41.5611, 34.7903 )
+
+[node name="Wall181" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 41.5611, 53.95 )
+
+[node name="Wall182" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 41.5611, 49.2635 )
+
+[node name="Wall183" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 41.5611, 44.5771 )
+
+[node name="Wall184" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 41.5611, 39.8906 )
+
+[node name="Wall185" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 41.5611, 33.6478 )
+
+[node name="Wall186" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 41.5611, 38.8303 )
+
+[node name="Wall187" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 41.5611, 44.0128 )
+
+[node name="Wall188" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 41.5611, 49.1953 )
+
+[node name="Wall189" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 41.5611, 26.1221 )
+
+[node name="Wall190" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 41.5611, 27.5631 )
+
+[node name="Wall191" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 41.5611, 29.0041 )
+
+[node name="Wall192" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 41.5611, 30.445 )
+
+[node name="Wall193" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 41.5611, 19.9211 )
+
+[node name="Wall194" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 41.5611, 27.7011 )
+
+[node name="Wall195" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 41.5611, 35.481 )
+
+[node name="Wall196" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 41.5611, 43.2609 )
+
+[node name="Wall197" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 41.5611, -10.5437 )
+
+[node name="Wall198" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 41.5611, -2.87432 )
+
+[node name="Wall199" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 41.5611, 4.79507 )
+
+[node name="Wall200" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 41.5611, 12.4644 )
+
+[node name="Wall201" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0419, 41.5611, 35.3418 )
+
+[node name="Wall202" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0175, 41.5611, 43.3417 )
+
+[node name="Wall203" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9931, 41.5611, 51.3417 )
+
+[node name="Wall204" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9686, 41.5611, 59.3417 )
+
+[node name="Wall205" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -35.0517, 41.5611, 7.39311 )
+
+[node name="Wall206" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -31.0305, 41.5611, 14.3091 )
+
+[node name="Wall207" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -27.0094, 41.5611, 21.225 )
+
+[node name="Wall208" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -22.9882, 41.5611, 28.141 )
+
+[node name="Wall209" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -14.2943, 41.5611, -10.1543 )
+
+[node name="Wall210" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -20.7779, 41.5611, -5.46783 )
+
+[node name="Wall211" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -27.2615, 41.5611, -0.781372 )
+
+[node name="Wall212" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -33.7451, 41.5611, 3.90507 )
+
+[node name="Wall213" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, 0.234344, 41.5611, -37.8367 )
+
+[node name="Wall214" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -3.0374, 41.5611, -30.5363 )
+
+[node name="Wall215" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -6.30914, 41.5611, -23.2359 )
+
+[node name="Wall216" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -9.58086, 41.5611, -15.9356 )
+
+[node name="Wall217" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 24.7103, 41.5611, -28.5249 )
+
+[node name="Wall218" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 16.8411, 41.5611, -29.9659 )
+
+[node name="Wall219" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 8.97192, 41.5611, -31.4069 )
+
+[node name="Wall220" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 1.10277, 41.5611, -32.8479 )
+
+[node name="Wall221" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 54.7518, 41.5611, -37.1795 )
+
+[node name="Wall222" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 47.2165, 41.5611, -34.4929 )
+
+[node name="Wall223" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 39.6811, 41.5611, -31.8062 )
+
+[node name="Wall224" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 32.1457, 41.5611, -29.1196 )
+
+[node name="Wall225" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 39.0074, 41.5611, -20.9292 )
+
+[node name="Wall226" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 36.7312, 41.5611, -28.5986 )
+
+[node name="Wall227" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 34.4551, 41.5611, -36.268 )
+
+[node name="Wall228" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 32.179, 41.5611, -43.9373 )
+
+[node name="Wall229" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 60.3202, 41.5611, 1.94356 )
+
+[node name="Wall230" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 54.5144, 41.5611, -3.56026 )
+
+[node name="Wall231" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 48.7085, 41.5611, -9.06406 )
+
+[node name="Wall232" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 42.9026, 41.5611, -14.5678 )
+
+[node name="Wall233" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 48.3308, 48.5133, 1.21371 )
+
+[node name="Wall234" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 52.3096, 48.5133, -5.72669 )
+
+[node name="Wall235" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 56.2885, 48.5133, -12.6671 )
+
+[node name="Wall236" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.867549, 0, -0.497352, 0, 1, 0, 0.497352, 0, 0.867549, 60.2673, 48.5133, -19.6075 )
+
+[node name="Wall237" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4893, 48.5133, 32.4228 )
+
+[node name="Wall238" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4648, 48.5133, 24.4228 )
+
+[node name="Wall239" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4404, 48.5133, 16.4229 )
+
+[node name="Wall240" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.999995, 0, 0.00305438, 0, 1, 0, -0.00305438, 0, 0.999995, 46.4159, 48.5133, 8.42294 )
+
+[node name="Wall241" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 19.7391, 48.5133, 37.2406 )
+
+[node name="Wall242" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 27.6973, 48.5133, 36.4238 )
+
+[node name="Wall243" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 35.6555, 48.5133, 35.607 )
+
+[node name="Wall244" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.102098, 0, -0.994774, 0, 1, 0, 0.994774, 0, 0.102098, 43.6137, 48.5133, 34.7903 )
+
+[node name="Wall245" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -6.68427, 48.5133, 53.95 )
+
+[node name="Wall246" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, -0.200653, 48.5133, 49.2635 )
+
+[node name="Wall247" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 6.28296, 48.5133, 44.5771 )
+
+[node name="Wall248" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.585807, 0, -0.810451, 0, 1, 0, 0.810451, 0, 0.585807, 12.7665, 48.5133, 39.8906 )
+
+[node name="Wall249" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -23.2251, 48.5133, 33.6478 )
+
+[node name="Wall250" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -17.1307, 48.5133, 38.8303 )
+
+[node name="Wall251" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -11.0363, 48.5133, 44.0128 )
+
+[node name="Wall252" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.647814, 0, -0.761799, 0, 1, 0, 0.761799, 0, -0.647814, -4.94193, 48.5133, 49.1953 )
+
+[node name="Wall253" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -53.5692, 48.5133, 26.1221 )
+
+[node name="Wall254" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -45.7, 48.5133, 27.5631 )
+
+[node name="Wall255" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -37.8309, 48.5133, 29.0041 )
+
+[node name="Wall256" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.180124, 0, -0.983644, 0, 1, 0, 0.983644, 0, -0.180124, -29.9617, 48.5133, 30.445 )
+
+[node name="Wall257" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -31.809, 48.5133, 19.9211 )
+
+[node name="Wall258" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -33.6724, 48.5133, 27.7011 )
+
+[node name="Wall259" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -35.5359, 48.5133, 35.481 )
+
+[node name="Wall260" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.972492, 0, 0.232936, 0, 1, 0, -0.232936, 0, -0.972492, -37.3994, 48.5133, 43.2609 )
+
+[node name="Wall261" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -38.83, 48.5133, -10.5437 )
+
+[node name="Wall262" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -36.5539, 48.5133, -2.87432 )
+
+[node name="Wall263" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -34.2777, 48.5133, 4.79507 )
+
+[node name="Wall264" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.958671, 0, -0.284517, 0, 1, 0, 0.284517, 0, -0.958671, -32.0016, 48.5133, 12.4644 )
+
+[node name="Wall265" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0419, 48.5133, 35.3418 )
+
+[node name="Wall266" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -21.0175, 48.5133, 43.3417 )
+
+[node name="Wall267" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9931, 48.5133, 51.3417 )
+
+[node name="Wall268" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.999995, 0, -0.0030545, 0, 1, 0, 0.0030545, 0, -0.999995, -20.9686, 48.5133, 59.3417 )
+
+[node name="Wall269" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -35.0517, 48.5133, 7.39311 )
+
+[node name="Wall270" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -31.0305, 48.5133, 14.3091 )
+
+[node name="Wall271" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -27.0094, 48.5133, 21.225 )
+
+[node name="Wall272" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.864494, 0, -0.502643, 0, 1, 0, 0.502643, 0, -0.864494, -22.9882, 48.5133, 28.141 )
+
+[node name="Wall273" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -14.2943, 48.5133, -10.1543 )
+
+[node name="Wall274" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -20.7779, 48.5133, -5.46783 )
+
+[node name="Wall275" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -27.2615, 48.5133, -0.781372 )
+
+[node name="Wall276" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.585807, 0, 0.810451, 0, 1, 0, -0.810451, 0, -0.585807, -33.7451, 48.5133, 3.90507 )
+
+[node name="Wall277" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, 0.234344, 48.5133, -37.8367 )
+
+[node name="Wall278" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -3.0374, 48.5133, -30.5363 )
+
+[node name="Wall279" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -6.30914, 48.5133, -23.2359 )
+
+[node name="Wall280" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.912549, 0, 0.408968, 0, 1, 0, -0.408968, 0, -0.912549, -9.58086, 48.5133, -15.9356 )
+
+[node name="Wall281" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 24.7103, 48.5133, -28.5249 )
+
+[node name="Wall282" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 16.8411, 48.5133, -29.9659 )
+
+[node name="Wall283" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 8.97192, 48.5133, -31.4069 )
+
+[node name="Wall284" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.180124, 0, 0.983644, 0, 1, 0, -0.983644, 0, 0.180124, 1.10277, 48.5133, -32.8479 )
+
+[node name="Wall285" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 54.7518, 48.5133, -37.1795 )
+
+[node name="Wall286" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 47.2165, 48.5133, -34.4929 )
+
+[node name="Wall287" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 39.6811, 48.5133, -31.8062 )
+
+[node name="Wall288" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( -0.33583, 0, 0.941923, 0, 1, 0, -0.941923, 0, -0.33583, 32.1457, 48.5133, -29.1196 )
+
+[node name="Wall289" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 39.0074, 48.5133, -20.9292 )
+
+[node name="Wall290" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 36.7312, 48.5133, -28.5986 )
+
+[node name="Wall291" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 34.4551, 48.5133, -36.268 )
+
+[node name="Wall292" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.958671, 0, 0.284518, 0, 1, 0, -0.284518, 0, 0.958671, 32.179, 48.5133, -43.9373 )
+
+[node name="Wall293" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 60.3202, 48.5133, 1.94356 )
+
+[node name="Wall294" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 54.5144, 48.5133, -3.56026 )
+
+[node name="Wall295" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 48.7085, 48.5133, -9.06406 )
+
+[node name="Wall296" parent="Level/Staircase/WallsUp/MoreWallsUp" instance=ExtResource( 3 )]
+transform = Transform( 0.687975, 0, 0.725735, 0, 1, 0, -0.725735, 0, 0.687975, 42.9026, 48.5133, -14.5678 )
+
+[node name="EndPlatform" type="StaticBody" parent="Level/Staircase"]
+transform = Transform( 18.9138, 0, -9.80904, 0, 1, 0, 16.3484, 0, 11.3483, 131.097, 26.1176, 111.232 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Staircase/EndPlatform"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Staircase/EndPlatform"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Stairs" type="Spatial" parent="Level/Staircase"]
+transform = Transform( -0.621763, 0, 0.783205, 0, 1, 0, -0.783205, 0, -0.621763, 149.313, -7.62939e-06, 95.7715 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs" instance=ExtResource( 11 )]
+transform = Transform( -6, 0, -4.76837e-07, 0, 1, 0, 1.43051e-06, 0, -2.5, 11.9133, 0, 1.58438 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="stairbit" parent="Level/Staircase/Stairs/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit/stairbit" instance=ExtResource( 11 )]
+transform = Transform( 0.965926, 0, -0.107841, 0, 1, 0, 0.621166, 0, 0.965926, 0.218559, 0.734216, -1.53733 )
+
+[node name="Spawner" type="Spatial" parent="Level/Staircase/Stairs"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -17.767, 29.5958, -5.57543 )
+script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="Level/Staircase/Stairs/Spawner"]
+wait_time = 10.0
+
+[node name="LevelEnd" parent="Level/Staircase" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120.148, 28.2162, 94.7719 )
+
+[node name="Enemy3" parent="Level/Staircase" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 121.041, 28.5091, 95.7131 )
+
+[node name="Enemy4" parent="Level/Staircase" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120.745, 28.5091, 89.7361 )
+
+[node name="Enemy5" parent="Level/Staircase" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 131.667, 28.5091, 113.95 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.79783, 1.37962, 41.2204 )
+
+[node name="Transition" parent="." instance=ExtResource( 7 )]
+
+[connection signal="died" from="Level/Cave/Enemy2" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy2" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy5" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy5" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy6" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy6" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy10" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy10" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy12" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy12" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy15" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy15" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy16" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy16" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy17" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy17" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy18" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy18" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy19" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy19" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="died" from="Level/Cave/Enemy20" to="Level/Staircase" method="_on_Enemy_died"]
+[connection signal="ready" from="Level/Cave/Enemy20" to="Level/Staircase" method="_on_Enemy_ready"]
+[connection signal="timeout" from="Level/Staircase/Timer" to="Level/Staircase" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Level/Staircase/Stairs/Spawner/Timer" to="Level/Staircase/Stairs/Spawner" method="_on_Timer_timeout"]
+
+[editable path="Level/Floor"]
+[editable path="Level/IntroRoom/Wall13"]
+[editable path="Level/IntroRoom/Wall14"]
+[editable path="Level/IntroRoom/Wall15"]
+[editable path="Level/IntroRoom/Wall16"]

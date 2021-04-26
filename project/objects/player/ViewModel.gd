@@ -22,13 +22,15 @@ func _on_Sprite_animation_finished():
 	$Sprite.play("default")
 
 func _on_Player_health_changed(new_health):
-	$PlayerUI/HealthBar.value = new_health
+	$PlayerUI/VBox/HealthBar.value = new_health
 	
 	#Update the portrait depending on the value
 	var portrait_index = 0
-	if new_health < 65:
+	if new_health < 50:
 		portrait_index = 1
-	elif new_health < 35:
+		$PlayerUI/VBox/Portrait.play("red")
+	elif new_health < 80:
 		portrait_index = 2
+		$PlayerUI/VBox/Portrait.play("yellow")	
 	
 	
