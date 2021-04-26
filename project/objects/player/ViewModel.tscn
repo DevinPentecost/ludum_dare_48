@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://objects/gui/view_model/CC0_barking_01.ogg" type="AudioStream" id=1]
 [ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://objects/gui/view_model/portrait0001.png" type="Texture" id=7]
 [ext_resource path="res://objects/gui/view_model/portrait0002.png" type="Texture" id=8]
 [ext_resource path="res://objects/gui/view_model/portrait0000.png" type="Texture" id=9]
+[ext_resource path="res://objects/gui/view_model/portrait0003.png" type="Texture" id=10]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 162.0
@@ -53,6 +54,11 @@ animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": false,
 "name": "yellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "dead",
 "speed": 5.0
 } ]
 
@@ -127,6 +133,6 @@ __meta__ = {
 position = Vector2( 25.5, 32.9563 )
 scale = Vector2( 0.111278, 0.111278 )
 frames = SubResource( 6 )
-animation = "green"
+animation = "dead"
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

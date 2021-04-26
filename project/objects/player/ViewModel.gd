@@ -34,7 +34,10 @@ func _on_Player_health_changed(new_health):
 	
 	#Update the portrait depending on the value
 	var portrait_index = 0
-	if new_health < 50:
+	if new_health < 1:
+		portrait_index = 3
+		$PlayerUI/VBox/Portrait.play("dead")
+	elif new_health < 50:
 		portrait_index = 1
 		$PlayerUI/VBox/Portrait.play("red")
 	elif new_health < 80:
