@@ -42,7 +42,6 @@ shape = ExtResource( 7 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.67024, 0 )
 environment = ExtResource( 4 )
-current = true
 fov = 90.0
 
 [node name="ViewModel" parent="Camera" instance=ExtResource( 3 )]
