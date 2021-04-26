@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/portraits.png-2aa4bf2a63e424a4d30498c38e6543ff.image"
+
+[deps]
+
+source_file="res://objects/player/portraits.png"
+dest_files=[ "res://.import/portraits.png-2aa4bf2a63e424a4d30498c38e6543ff.image" ]
+
+[params]
+

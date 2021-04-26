@@ -10,6 +10,7 @@ onready var _player: Player = get_tree().get_nodes_in_group("player")[0]
 onready var _sleep_timer = $SleepTimer
 onready var _sight: RayCast = $Sight
 onready var _attack_timer:Timer = $AttackTimer
+onready var _bullet_spawner:Spatial = $BulletSpawner
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,14 +69,23 @@ func _take_hit(bullet: Bullet):
 
 func _fire():
 	
-	$BulletSpawner.look_at(_player.target.global_transform.origin, Vector3.UP)
+	_bullet_spawner.look_at(_player.target.global_transform.origin, Vector3.UP)
 	
 	#Spawn a bullet
 	var new_bullet = EnemyBulletScene.instance()
-	new_bullet.transform.origin = $BulletSpawner.global_transform.origin
+	new_bullet.transform.origin = _bullet_spawner.global_transform.origin
 	new_bullet.transform.basis.x = transform.basis.x
 	get_tree().root.add_child(new_bullet)
-	new_bullet.look_at(_player.target.global_transform.origin, Vector3.UP)
+	#new_bullet.look_at(_player.target.global_transform.origin, Vector3.UP)
+	
+	#Play attack animation
+	$AnimatedSprite3D.play("attack")
+	yield($AnimatedSprite3D, "animation_finished")
+	
+	if enemy_state != EnemyState.DEAD:
+		$AnimatedSprite3D.play("default")
+	else:
+		$AnimatedSprite3D.play("die")
 
 func _on_Hurtbox_body_entered(body: PhysicsBody):
 	
