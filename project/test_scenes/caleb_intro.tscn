@@ -7,7 +7,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
-const level_1 = preload(\"res://scenes/level_1.tscn\")
+const level_1 = preload(\"res://scenes/intro.tscn\")
 
 func _on_TextureButton_pressed():
 	

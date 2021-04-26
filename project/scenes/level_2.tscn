@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/level_pieces/floor.tscn" type="PackedScene" id=2]
@@ -12,11 +12,33 @@
 [ext_resource path="res://scenes/Spawner.gd" type="Script" id=10]
 [ext_resource path="res://objects/level_pieces/ramp.tscn" type="PackedScene" id=11]
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends Spatial
+
+const End = preload(\"res://scenes/end.tscn\")
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_LevelEnd_level_ended():
+	yield(TransitionSingleton.get_current_screenshot(), \"completed\")
+	get_tree().change_scene_to(End)
+"
+
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="CubeMesh" id=2]
 
 [node name="Level2" type="Spatial"]
+script = SubResource( 3 )
 
 [node name="Level" type="Spatial" parent="."]
 
@@ -227,7 +249,6 @@ transform = Transform( 5.47081, 0, -1.67416, 0, 3, 0, 8.3708, 0, 1.09416, 54.263
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised15"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -248,7 +269,6 @@ transform = Transform( 9.53706, 0, -0.601478, 0, 3, 0, 3.00739, 0, 1.90741, 16.3
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised17"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -352,7 +372,6 @@ transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1
 transform = Transform( 7.55343, -1.34169, 0.958007, 3.77687, 2.68326, 0.479023, -5.35547, 0, 1.68901, 105.461, 0.659977, 32.0976 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Level/Cave/Raised18"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Level/Cave/Raised18"]
@@ -1815,7 +1834,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 120.745, 28.5091, 89.7361 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 131.667, 28.5091, 113.95 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.79783, 1.37962, 41.2204 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5599, 0.825719, 40.4019 )
 
 [node name="Transition" parent="." instance=ExtResource( 7 )]
 
@@ -1845,6 +1864,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.79783, 1.37962, 41.2204 )
 [connection signal="ready" from="Level/Cave/Enemy20" to="Level/Staircase" method="_on_Enemy_ready"]
 [connection signal="timeout" from="Level/Staircase/Timer" to="Level/Staircase" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Level/Staircase/Stairs/Spawner/Timer" to="Level/Staircase/Stairs/Spawner" method="_on_Timer_timeout"]
+[connection signal="level_ended" from="Level/Staircase/LevelEnd" to="." method="_on_LevelEnd_level_ended"]
 
 [editable path="Level/Floor"]
 [editable path="Level/IntroRoom/Wall13"]
