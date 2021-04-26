@@ -30,6 +30,10 @@ config/name="Ludum Dare 48"
 run/main_scene="res://test_scenes/caleb_intro.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+TransitionSingleton="*res://objects/gui/transition/TransitionSingleton.gd"
+
 [display]
 
 window/size/width=320

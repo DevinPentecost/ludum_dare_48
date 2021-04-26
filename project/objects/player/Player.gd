@@ -43,13 +43,15 @@ class MovementHelper:
 	
 	var current_speed = 0
 	var accelleration = 8
-	var decelleration = -12
+	var decelleration = -8
 	var max_speed = 10
 	var max_sprint_speed = 20
+	var last_movement_direction = Vector3.ZERO
+	var decellerate = true
 	
 	func update_speed(delta):
 		var speed_direction = accelleration
-		if get_movement_direction() == Vector3.ZERO:
+		if decellerate:
 			speed_direction = decelleration
 		
 		current_speed += accelleration*delta*speed_direction
@@ -63,30 +65,40 @@ class MovementHelper:
 		current_speed = max(0, current_speed)
 	
 	func get_movement_direction():
-		
+		decellerate = false
 		#Do this the hard way
 		if forward and backward or left and right:
-			return Vector3.ZERO
+			return last_movement_direction
 		
 		if forward and left:
-			return Vector3.FORWARD.rotated(Vector3.UP, PI/4)
+			last_movement_direction = Vector3.FORWARD.rotated(Vector3.UP, PI/4)
+			return last_movement_direction
 		elif forward and right:
-			return Vector3.FORWARD.rotated(Vector3.UP, -PI/4)
+			last_movement_direction = Vector3.FORWARD.rotated(Vector3.UP, -PI/4)
+			return last_movement_direction
 		elif backward and left:
-			return Vector3.BACK.rotated(Vector3.UP, -PI/4)
+			last_movement_direction = Vector3.BACK.rotated(Vector3.UP, -PI/4)
+			return last_movement_direction
 		elif backward and right:
-			return Vector3.BACK.rotated(Vector3.UP, PI/4)
+			last_movement_direction = Vector3.BACK.rotated(Vector3.UP, PI/4)
+			return last_movement_direction
 		
 		if forward:
-			return Vector3.FORWARD
+			last_movement_direction = Vector3.FORWARD
+			return last_movement_direction
 		elif backward:
-			return Vector3.BACK
+			last_movement_direction = Vector3.BACK
+			return last_movement_direction
 		elif left:
-			return Vector3.LEFT
+			last_movement_direction = Vector3.LEFT
+			return last_movement_direction
 		elif right:
-			return Vector3.RIGHT
+			last_movement_direction = Vector3.RIGHT
+			return last_movement_direction
 		else:
-			return Vector3.ZERO
+			decellerate = true
+			return last_movement_direction
+		
 
 var _movement_helper = MovementHelper.new()
 
