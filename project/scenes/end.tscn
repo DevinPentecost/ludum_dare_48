@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var can_restart = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	set_process_input(true)
+	
+	$Tween.interpolate_property($RichTextLabel, \"percent_visible\", 0, 1, 5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, \"tween_completed\")
+	can_restart = true
+
+func _input(event):
+	if event is InputEventMouseButton or event is InputEventKey:
+		if not can_restart:
+			return
+			
+		yield(TransitionSingleton.get_current_screenshot(), \"completed\")
+		
+		var StartScreen = load(\"res://test_scenes/caleb_intro.tscn\")
+		
+		get_tree().change_scene_to(StartScreen)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.629944
+margin_top = -0.629974
+margin_right = -0.629944
+margin_bottom = -0.629974
+text = "Congratulations! You have dug past the sentient rocks and reached your prized bone! You were able to return home safely in time for dinner.
+
+Press any key to play again!"
+fit_content_height = true
+
+[node name="Tween" type="Tween" parent="."]

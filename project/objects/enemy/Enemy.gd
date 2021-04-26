@@ -32,6 +32,9 @@ var _current_fall_speed = 0
 
 
 func _physics_process(delta):
+	if _player == null:
+		return
+	
 	look_at(_player.target.global_transform.origin, Vector3.UP)
 	transform.basis.y = Vector3.UP
 	#transform.origin.y = 0

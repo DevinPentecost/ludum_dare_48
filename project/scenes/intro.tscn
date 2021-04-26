@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var can_restart = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	set_process_input(true)
+	
+	$Tween.interpolate_property($RichTextLabel, \"percent_visible\", 0, 1, 5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, \"tween_completed\")
+	can_restart = true
+
+func _input(event):
+	if event is InputEventMouseButton or event is InputEventKey:
+		if not can_restart:
+			return
+			
+		yield(TransitionSingleton.get_current_screenshot(), \"completed\")
+		
+		var StartScreen = load(\"res://scenes/level_1.tscn\")
+		
+		get_tree().change_scene_to(StartScreen)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.629944
+margin_top = -1.22458
+margin_right = -0.629944
+margin_bottom = -1.22458
+text = "Oh No! You buried your bone too deep and now the rock monsters have stolen it!
+Use WASD to navigate the maze-like underground and bark-attack with CTRL or the mouse button.
+Make sure you defeat all of the monsters... some of them are blocking your way with powerful magic. They are also throwing rocks at you, so watch out!
+
+Press any key to play!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
