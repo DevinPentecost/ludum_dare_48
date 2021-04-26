@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/gui/view_model/CC0_barking_01.ogg" type="AudioStream" id=1]
 [ext_resource path="res://objects/gui/view_model/bite0001.png" type="Texture" id=2]
 [ext_resource path="res://objects/gui/view_model/bite0000.png" type="Texture" id=3]
 [ext_resource path="res://objects/player/ViewModel.gd" type="Script" id=4]
 [ext_resource path="res://objects/player/portraits.atlas.png" type="Texture" id=5]
+[ext_resource path="res://objects/gui/view_model/bite0002.png" type="Texture" id=6]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 162.0
@@ -22,10 +23,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "fire",
-"speed": 12.0
+"speed": 10.0
 } ]
 
 [node name="ViewModel" type="Spatial"]

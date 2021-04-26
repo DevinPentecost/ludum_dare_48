@@ -4,50 +4,50 @@
 [ext_resource path="res://test_scenes/dog.gd" type="Script" id=2]
 [ext_resource path="res://sandbox/title.png" type="Texture" id=3]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.0627451, 0.262745, 0, 1 )
 
-[sub_resource type="PlaneMesh" id=1]
-material = SubResource( 3 )
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
 
-[sub_resource type="CylinderMesh" id=11]
-
-[sub_resource type="SpatialMaterial" id=12]
-albedo_color = Color( 0.109804, 0.0862745, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=15]
-albedo_color = Color( 0.258824, 0.2, 0, 1 )
-
-[sub_resource type="PrismMesh" id=16]
-material = SubResource( 15 )
+[sub_resource type="CylinderMesh" id=3]
 
 [sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.372549, 0.286275, 0, 1 )
-
-[sub_resource type="CapsuleMesh" id=2]
-material = SubResource( 4 )
+albedo_color = Color( 0.109804, 0.0862745, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.258824, 0.2, 0, 1 )
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="PrismMesh" id=6]
 material = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.372549, 0.286275, 0, 1 )
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CapsuleMesh" id=8]
 material = SubResource( 7 )
 
 [sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 0.372549, 0.286275, 0, 1 )
+albedo_color = Color( 0.258824, 0.2, 0, 1 )
 
 [sub_resource type="CubeMesh" id=10]
 material = SubResource( 9 )
 
-[sub_resource type="CylinderMesh" id=13]
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.372549, 0.286275, 0, 1 )
+
+[sub_resource type="CubeMesh" id=14]
+material = SubResource( 13 )
+
+[sub_resource type="CylinderMesh" id=15]
+
+[sub_resource type="SpatialMaterial" id=16]
 albedo_color = Color( 0.258824, 0.2, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=17]
@@ -67,7 +67,7 @@ texture = ExtResource( 3 )
 
 [node name="ground" type="MeshInstance" parent="."]
 transform = Transform( 9.90522, -0.0936284, 1.37036, 0.00355503, 9.97845, 0.656069, -1.37355, -0.649363, 9.88391, 0, 0.930628, 0 )
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="hole" type="Position3D" parent="."]
@@ -75,13 +75,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64577, 0 )
 
 [node name="Dirt" type="MeshInstance" parent="hole"]
 transform = Transform( 0.18046, 0.276287, 0, -0.276287, 0.18046, 0, 0, 0, 0.33, 0, -0.824746, 0 )
-mesh = SubResource( 11 )
-material/0 = SubResource( 12 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="Particles" type="CPUParticles" parent="hole"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196195, -0.504884, 0 )
 amount = 4
-mesh = SubResource( 16 )
+mesh = SubResource( 6 )
 direction = Vector3( 1, 1, 0 )
 spread = 10.0
 initial_velocity = 5.0
@@ -92,39 +92,39 @@ scale_amount_random = 0.01
 
 [node name="dog" type="MeshInstance" parent="."]
 transform = Transform( -8.72928e-09, 0.0348668, 0.247557, -6.57392e-09, 0.247557, -0.0348668, -0.25, -7.72715e-09, -7.72715e-09, 0.748638, 1.39011, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 8 )
 material/0 = null
 script = ExtResource( 2 )
 
 [node name="head" type="MeshInstance" parent="dog"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 6.20882e-09, 0, -6.20882e-09, 0.5, 1.07745e-08, 1.06792, -1.41652 )
-mesh = SubResource( 6 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="snout" type="MeshInstance" parent="dog/head"]
 transform = Transform( 0.5, 0, -7.10543e-15, 0, 0.5, 7.45058e-09, 0, -7.45058e-09, 0.5, 5.07027e-08, -0.278858, -1.36155 )
-mesh = SubResource( 6 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="nose" type="MeshInstance" parent="dog/head/snout"]
 transform = Transform( 0.5, 0, -1.06581e-14, -1.77636e-15, 0.5, 7.45058e-09, 0, -7.45058e-09, 0.5, 3.15828e-08, -0.202492, -0.819328 )
-mesh = SubResource( 8 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Ear" type="MeshInstance" parent="dog/head"]
 transform = Transform( 0.124143, -0.129944, -0.263994, 0.0117422, 0.259591, -0.404206, 0.0833704, 0.156931, 0.450029, -1.03877, 0.221839, -0.0312443 )
-mesh = SubResource( 10 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="Ear2" type="MeshInstance" parent="dog/head"]
 transform = Transform( 0.133814, 0.0722556, 0.260871, 0.0117421, 0.259589, -0.40421, -0.0667532, 0.190507, 0.451843, 1.01177, 0.221839, -0.0312443 )
-mesh = SubResource( 10 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="Tail" type="MeshInstance" parent="dog"]
 transform = Transform( 0.0741828, 0.352902, 0.0570222, 0.011187, 0.773284, -0.0624113, -0.0661192, 0.526775, 0.0534165, 0.00395447, 0.850103, 1.06865 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = SubResource( 16 )
 
 [node name="Leg1" type="MeshInstance" parent="dog"]
 transform = Transform( 0.1, -7.10543e-15, -1.11022e-15, 1.11022e-15, 0.66, 9.31323e-10, 2.66454e-15, 6.30522e-16, 0.1, -0.975937, -0.921427, -0.996021 )
