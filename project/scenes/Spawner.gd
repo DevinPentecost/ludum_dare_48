@@ -12,7 +12,7 @@ func start_timer():
 func _spawn():
 	print("spawning a man")
 	var new_enemy = enemyscene.instance()
-	new_enemy.transform = transform
+	new_enemy.global_transform = global_transform
 	get_tree().root.add_child(new_enemy)
 	
 
