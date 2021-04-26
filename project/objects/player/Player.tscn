@@ -6,7 +6,7 @@
 [ext_resource path="res://objects/level_pieces/level_1_env.tres" type="Environment" id=4]
 [ext_resource path="res://objects/player/PlayerShape.tres" type="Shape" id=7]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.312267, 6.24635, 0.473574 )
 
 [sub_resource type="BoxShape" id=2]
@@ -39,7 +39,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37372, 2.39745, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15046, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="BulletSpawner/shoot_target"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Activator" type="Area" parent="." groups=[
