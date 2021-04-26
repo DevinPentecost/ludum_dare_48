@@ -1,5 +1,10 @@
 extends Spatial
 
+onready var _player = get_tree().get_nodes_in_group("player")[0]
+
+func _ready():
+	_player.connect("health_changed", self, "_on_Player_health_changed")
+
 func fire():
 	$Sprite.play("fire")
 	$AudioStreamPlayer.play()
@@ -15,3 +20,15 @@ func die():
 func _on_Sprite_animation_finished():
 	#Go back to normal
 	$Sprite.play("default")
+
+func _on_Player_health_changed(new_health):
+	$PlayerUI/HealthBar.value = new_health
+	
+	#Update the portrait depending on the value
+	var portrait_index = 0
+	if new_health < 65:
+		portrait_index = 1
+	elif new_health < 35:
+		portrait_index = 2
+	
+	
