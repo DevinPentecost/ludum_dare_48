@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/level_end/bone.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -35,13 +37,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -9.0
+margin_top = -6.0
+margin_right = 330.0
+margin_bottom = 253.0
+color = Color( 0.121569, 0.105882, 0.105882, 1 )
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.629944
-margin_top = -1.22458
-margin_right = -0.629944
-margin_bottom = -1.22458
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 69.0
+margin_bottom = 37.0
+rect_scale = Vector2( 0.75, 0.75 )
 text = "Oh No! You buried your bone too deep and now the rock monsters have stolen it!
 Use WASD to navigate the maze-like underground and bark-attack with CTRL or the mouse button.
 Make sure you defeat all of the monsters... some of them are blocking your way with powerful magic. They are also throwing rocks at you, so watch out!
@@ -53,3 +63,8 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 118.987, 156.827 )
+scale = Vector2( 0.382466, 0.382466 )
+texture = ExtResource( 1 )

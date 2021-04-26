@@ -253,11 +253,11 @@ directional_shadow_mode = 0
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -17.222
-margin_top = -1.9496
-margin_right = 551.778
-margin_bottom = 353.05
-rect_scale = Vector2( 0.4, 0.4 )
+margin_left = 13.1836
+margin_top = -9.72778
+margin_right = 662.184
+margin_bottom = 365.272
+rect_scale = Vector2( 0.25, 0.25 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
