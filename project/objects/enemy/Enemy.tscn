@@ -102,6 +102,7 @@ script/source = "extends AudioStreamPlayer3D
 
 var ow_sound = preload(\"res://objects/enemy/ow.ogg\")
 var die_sound = preload(\"res://objects/enemy/die.ogg\")
+var attack_sound = preload(\"res://objects/enemy/attack.ogg\")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -122,6 +123,10 @@ func play_die():
 	stream = die_sound
 	play()
 
+func play_attack():
+	stream = attack_sound
+	play()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -136,7 +141,6 @@ script = ExtResource( 2 )
 transform = Transform( 4.62633, 0, 0, 0, 5.27192, 0, 0, 0, 24.3897, 0, 1.66697, 0 )
 billboard = 2
 frames = SubResource( 16 )
-frame = 4
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

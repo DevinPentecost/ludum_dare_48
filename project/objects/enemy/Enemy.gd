@@ -114,6 +114,7 @@ func _fire():
 	new_bullet.shoot_at(_player)
 
 	#Play attack animation
+	$AudioStreamPlayer3D.play_attack()
 	$AnimatedSprite3D.play("attack")
 	yield($AnimatedSprite3D, "animation_finished")
 	
